@@ -21,6 +21,10 @@
             file="Source/BodyResonator.cpp"/>
       <FILE id="BR5678" name="BodyResonator.h" compile="0" resource="0"
             file="Source/BodyResonator.h"/>
+      <FILE id="SC1234" name="StringControl.cpp" compile="1" resource="0"
+            file="Source/StringControl.cpp"/>
+      <FILE id="SC5678" name="StringControl.h" compile="0" resource="0"
+            file="Source/StringControl.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
