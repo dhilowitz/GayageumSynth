@@ -276,7 +276,7 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
             int stringIndex = (noteNumber - 60) % numStrings;
             if (stringIndex < 0) stringIndex += numStrings;
             
-            DBG("String " + juce::String(stringIndex) + "triggered.f");
+            // DBG("String " + juce::String(stringIndex) + " triggered.");
             
             strings[stringIndex].trigger(velocity);
         }
