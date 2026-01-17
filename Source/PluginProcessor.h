@@ -64,9 +64,18 @@ public:
 
 private:
     //==============================================================================
-    // 12 strings for the gayageum
+    // Voice management
     static constexpr int numStrings = 12;
-    std::array<G1GayageumString, numStrings> strings;
+    static constexpr int maxVoices = 32;  // For free play mode
+    std::array<G1GayageumString, maxVoices> strings;
+    
+    // Voice allocation for free play mode
+    struct Voice
+    {
+        int midiNote = -1;  // -1 = voice not active
+        int stringIndex = -1;
+    };
+    std::array<Voice, maxVoices> voices;
     
     // Body resonator
     G1BodyResonator bodyResonator;
@@ -75,6 +84,10 @@ private:
     
     // Update string parameters from APVTS
     void updateStringParameters();
+    
+    // Voice allocation helper
+    int findFreeVoice();
+    int findVoiceForNote(int midiNote);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Gayageum1AudioProcessor)
 };

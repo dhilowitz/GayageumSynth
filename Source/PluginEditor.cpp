@@ -149,6 +149,15 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     excitationAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "excitationBlend", excitationSlider);
     
+    // Play mode toggle
+    playModeToggle.setButtonText("Free Play Mode");
+    playModeToggle.setColour(juce::ToggleButton::textColourId, juce::Colours::white);
+    playModeToggle.setColour(juce::ToggleButton::tickColourId, juce::Colours::lightgreen);
+    addAndMakeVisible(playModeToggle);
+    
+    playModeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
+        audioProcessor.apvts, "playMode", playModeToggle);
+    
     // Info label
     infoLabel.setText("Move Anjok bridges (sliders) to tune each string. MIDI notes 60-71 (C4-B4) trigger strings 1-12.", 
                       juce::dontSendNotification);
@@ -201,6 +210,10 @@ void Gayageum1AudioProcessorEditor::resized()
     
     // Title at top
     titleLabel.setBounds(bounds.removeFromTop(40).reduced(20, 5));
+    
+    // Play mode toggle below title
+    auto toggleArea = bounds.removeFromTop(30);
+    playModeToggle.setBounds(toggleArea.withSizeKeepingCentre(150, 25));
     
     bounds.removeFromTop(10);
     

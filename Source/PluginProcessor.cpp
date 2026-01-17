@@ -73,6 +73,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
         1.0f  // Default to noise burst
     ));
     
+    // Play mode control
+    layout.add(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("playMode",1),
+        "Free Play Mode",
+        false  // Default to traditional mode
+    ));
+    
     return layout;
 }
 
@@ -143,10 +150,17 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
 {
     currentSampleRate = sampleRate;
     
-    // Initialize all 12 strings
+    // Initialize all voices
     for (auto& string : strings)
     {
         string.prepare(sampleRate);
+    }
+    
+    // Initialize voice allocation
+    for (auto& voice : voices)
+    {
+        voice.midiNote = -1;
+        voice.stringIndex = -1;
     }
     
     // Initialize body resonator
@@ -181,36 +195,70 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
         strings[i].setDamping(0.7f);  // Apply damping AFTER frequency is set
     }
     
+    // Initialize remaining voices for free play mode
+    for (int i = numStrings; i < maxVoices; ++i)
+    {
+        strings[i].setFrequency(440.0f);  // Default to A4
+        strings[i].setDamping(0.7f);
+    }
+    
     updateStringParameters();
 }
 
 void Gayageum1AudioProcessor::updateStringParameters()
 {
-    // Update each string's Anjok position from parameters
-    for (int i = 0; i < numStrings; ++i)
+    // Check play mode
+    bool freePlayMode = apvts.getRawParameterValue("playMode")->load() > 0.5f;
+    
+    // Update each string's Anjok position from parameters (traditional mode only)
+    if (!freePlayMode)
     {
-        auto paramID = "anjok" + juce::String(i + 1);
-        float position = apvts.getRawParameterValue(paramID)->load();
-        strings[i].setAnjokPosition(position);
+        for (int i = 0; i < numStrings; ++i)
+        {
+            auto paramID = "anjok" + juce::String(i + 1);
+            float position = apvts.getRawParameterValue(paramID)->load();
+            strings[i].setAnjokPosition(position);
+        }
     }
     
-    // Update global damping
+    // Update global damping (both modes)
     float damping = apvts.getRawParameterValue("damping")->load();
     for (auto& string : strings)
     {
         string.setDamping(damping);
     }
     
-    // Update excitation blend
+    // Update excitation blend (both modes)
     float excitationBlend = apvts.getRawParameterValue("excitationBlend")->load();
     for (auto& string : strings)
     {
         string.setExcitationBlend(excitationBlend);
     }
     
-    // Update body resonance
+    // Update body resonance (both modes)
     float bodyResonance = apvts.getRawParameterValue("bodyResonance")->load();
     bodyResonator.setResonanceAmount(bodyResonance);
+}
+
+int Gayageum1AudioProcessor::findFreeVoice()
+{
+    for (int i = 0; i < maxVoices; ++i)
+    {
+        if (voices[i].midiNote == -1)
+            return i;
+    }
+    // If no free voice, steal the oldest (voice 0)
+    return 0;
+}
+
+int Gayageum1AudioProcessor::findVoiceForNote(int midiNote)
+{
+    for (int i = 0; i < maxVoices; ++i)
+    {
+        if (voices[i].midiNote == midiNote)
+            return i;
+    }
+    return -1;
 }
 
 void Gayageum1AudioProcessor::releaseResources()
@@ -260,6 +308,9 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
 
     // Update string parameters from APVTS (Anjok positions and damping)
     updateStringParameters();
+    
+    // Get play mode once for the entire block
+    bool freePlayMode = apvts.getRawParameterValue("playMode")->load() > 0.5f;
 
     // Process MIDI messages to trigger strings
     for (const auto metadata : midiMessages)
@@ -271,32 +322,67 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
             int noteNumber = message.getNoteNumber();
             float velocity = message.getFloatVelocity();
             
-            // Map MIDI notes to the 12 gayageum strings
-            // MIDI note 60 (C4) maps to string 0, etc.
-            int stringIndex = (noteNumber - 60) % numStrings;
-            if (stringIndex < 0) stringIndex += numStrings;
-            
-            // DBG("String " + juce::String(stringIndex) + " triggered.");
-            
-            strings[stringIndex].trigger(velocity);
+            if (freePlayMode)
+            {
+                // Free play mode: allocate a voice and set frequency directly from MIDI note
+                int voiceIndex = findFreeVoice();
+                voices[voiceIndex].midiNote = noteNumber;
+                voices[voiceIndex].stringIndex = voiceIndex;
+                
+                // Calculate frequency from MIDI note number: f = 440 * 2^((n-69)/12)
+                float frequency = 440.0f * std::pow(2.0f, (noteNumber - 69) / 12.0f);
+                strings[voiceIndex].setFrequency(frequency);
+                
+                // Reapply damping after frequency change (damping compensation depends on frequency)
+                float damping = apvts.getRawParameterValue("damping")->load();
+                strings[voiceIndex].setDamping(damping);
+                
+                strings[voiceIndex].trigger(velocity);
+            }
+            else
+            {
+                // Traditional mode: map MIDI notes to the 12 gayageum strings
+                // MIDI note 60 (C4) maps to string 0, etc.
+                int stringIndex = (noteNumber - 60) % numStrings;
+                if (stringIndex < 0) stringIndex += numStrings;
+                
+                strings[stringIndex].trigger(velocity);
+            }
+        }
+        else if (message.isNoteOff())
+        {
+            if (freePlayMode)
+            {
+                // Free play mode: release the voice
+                int noteNumber = message.getNoteNumber();
+                int voiceIndex = findVoiceForNote(noteNumber);
+                if (voiceIndex != -1)
+                {
+                    voices[voiceIndex].midiNote = -1;
+                    voices[voiceIndex].stringIndex = -1;
+                    // Optionally: trigger a quick release envelope here
+                }
+            }
+            // Traditional mode: notes sustain until they naturally decay
         }
     }
 
     // Process audio samples
     int numSamples = buffer.getNumSamples();
+    int activeVoices = freePlayMode ? maxVoices : numStrings;
     
     for (int sample = 0; sample < numSamples; ++sample)
     {
         float output = 0.0f;
         
-        // Sum all 12 strings
-        for (int stringNum = 0; stringNum < numStrings; ++stringNum)
+        // Sum active voices
+        for (int voiceNum = 0; voiceNum < activeVoices; ++voiceNum)
         {
-            output += strings[stringNum].processSample(0.0f);
+            output += strings[voiceNum].processSample(0.0f);
         }
         
-        // Scale output to prevent clipping (12 strings)
-        output *= 0.15f;
+        // Scale output to prevent clipping
+        output *= freePlayMode ? 0.08f : 0.15f;  // More scaling for more voices
         
         // Process through body resonator
         output = bodyResonator.processSample(output);

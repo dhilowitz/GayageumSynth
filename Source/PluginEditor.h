@@ -68,6 +68,10 @@ private:
     juce::Slider excitationSlider;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> excitationAttachment;
     
+    // Play mode toggle
+    juce::ToggleButton playModeToggle;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> playModeAttachment;
+    
     // Info labels
     juce::Label infoLabel;
     
