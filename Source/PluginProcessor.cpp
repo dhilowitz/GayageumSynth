@@ -36,19 +36,19 @@ void BodyResonator::prepare(double sr)
     };
     
     const float Q_values[numResonances] = {
-        8.0f,     // Lower resonances have higher Q (longer decay)
+        15.0f,    // Higher Q = more pronounced resonance
+        18.0f,
+        12.0f,
         10.0f,
-        7.0f,
-        5.0f,
-        4.0f      // Higher resonances decay faster
+        8.0f
     };
     
     const float gains[numResonances] = {
-        2.5f,     // Strongest low resonance
-        2.0f,
-        1.5f,
-        1.0f,
-        0.7f      // Weaker high resonance
+        4.5f,     // Much stronger low resonance
+        3.5f,
+        2.8f,
+        2.2f,
+        1.5f
     };
     
     for (int i = 0; i < numResonances; ++i)
@@ -75,9 +75,9 @@ float BodyResonator::processSample(float input)
         resonantOutput += resonator.process(input);
     }
     
-    // Mix dry and resonant signal
-    float dry = input * (1.0f - resonanceAmount * 0.3f);  // Keep most of dry signal
-    float wet = resonantOutput * resonanceAmount * 0.15f;  // Add resonances
+    // Mix dry and resonant signal - much more pronounced wet signal
+    float dry = input * (1.0f - resonanceAmount * 0.6f);  // Reduce dry as resonance increases
+    float wet = resonantOutput * resonanceAmount * 0.35f;  // Stronger wet signal
     
     return dry + wet;
 }
@@ -214,9 +214,17 @@ float GayageumString::calculateFrequencyFromAnjok()
 
 void GayageumString::setDamping(float damping)
 {
-    // damping: 0.0 = heavily damped, 1.0 = minimal damping
-    filterCoeff = juce::jlimit(0.1f, 0.9f, damping);
-    filterGain = juce::jlimit(0.99f, 0.9999f, 0.999f + (1.0f - damping) * 0.0009f);
+    // damping: 0.0 = heavily damped (short decay), 1.0 = minimal damping (long decay)
+    // Much more extreme range for dramatic effect
+    
+    // Filter coefficient - controls high frequency damping
+    filterCoeff = juce::jlimit(0.05f, 0.95f, damping * 0.95f + 0.05f);
+    
+    // Filter gain - controls overall decay time
+    // Low damping (0.0) = very short decay (0.93 feedback)
+    // High damping (1.0) = very long decay (0.9998 feedback)
+    float feedbackGain = 0.93f + damping * 0.0698f;  // Range: 0.93 to 0.9998
+    filterGain = juce::jlimit(0.93f, 0.9998f, feedbackGain);
 }
 
 void GayageumString::trigger(float velocity)
