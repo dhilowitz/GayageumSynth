@@ -10,6 +10,124 @@
 #include "PluginEditor.h"
 
 //==============================================================================
+// BodyResonator Implementation
+//==============================================================================
+
+BodyResonator::BodyResonator()
+    : resonanceAmount(0.5f)
+    , sampleRate(44100.0)
+{
+}
+
+void BodyResonator::prepare(double sr)
+{
+    sampleRate = sr;
+    
+    // Set up resonance peaks based on typical gayageum body characteristics
+    // Paulownia wood body has characteristic resonances
+    // These frequencies are approximations based on similar instruments
+    
+    const float frequencies[numResonances] = {
+        180.0f,   // Low fundamental body resonance
+        380.0f,   // Secondary resonance
+        720.0f,   // Mid-range resonance
+        1200.0f,  // Upper mid resonance
+        2400.0f   // High frequency air resonance
+    };
+    
+    const float Q_values[numResonances] = {
+        8.0f,     // Lower resonances have higher Q (longer decay)
+        10.0f,
+        7.0f,
+        5.0f,
+        4.0f      // Higher resonances decay faster
+    };
+    
+    const float gains[numResonances] = {
+        2.5f,     // Strongest low resonance
+        2.0f,
+        1.5f,
+        1.0f,
+        0.7f      // Weaker high resonance
+    };
+    
+    for (int i = 0; i < numResonances; ++i)
+    {
+        resonators[i].setResonance(sampleRate, frequencies[i], Q_values[i], gains[i]);
+    }
+}
+
+void BodyResonator::reset()
+{
+    for (auto& resonator : resonators)
+    {
+        resonator.reset();
+    }
+}
+
+float BodyResonator::processSample(float input)
+{
+    // Sum all resonant peaks
+    float resonantOutput = 0.0f;
+    
+    for (auto& resonator : resonators)
+    {
+        resonantOutput += resonator.process(input);
+    }
+    
+    // Mix dry and resonant signal
+    float dry = input * (1.0f - resonanceAmount * 0.3f);  // Keep most of dry signal
+    float wet = resonantOutput * resonanceAmount * 0.15f;  // Add resonances
+    
+    return dry + wet;
+}
+
+void BodyResonator::setResonanceAmount(float amount)
+{
+    resonanceAmount = juce::jlimit(0.0f, 1.0f, amount);
+}
+
+void BodyResonator::ResonantFilter::setResonance(double sampleRate, float frequency, float Q, float gain)
+{
+    // Design a peaking EQ filter (biquad) for resonance
+    float w0 = juce::MathConstants<float>::twoPi * frequency / static_cast<float>(sampleRate);
+    float alpha = std::sin(w0) / (2.0f * Q);
+    float A = std::sqrt(gain);
+    
+    float cosw0 = std::cos(w0);
+    
+    // Peaking filter coefficients
+    b0 = 1.0f + alpha * A;
+    b1 = -2.0f * cosw0;
+    b2 = 1.0f - alpha * A;
+    float a0 = 1.0f + alpha / A;
+    a1 = -2.0f * cosw0;
+    a2 = 1.0f - alpha / A;
+    
+    // Normalize by a0
+    b0 /= a0;
+    b1 /= a0;
+    b2 /= a0;
+    a1 /= a0;
+    a2 /= a0;
+}
+
+float BodyResonator::ResonantFilter::process(float input)
+{
+    // Direct Form II transposed
+    float output = b0 * input + x1;
+    x1 = b1 * input - a1 * output + x2;
+    x2 = b2 * input - a2 * output;
+    
+    return output;
+}
+
+void BodyResonator::ResonantFilter::reset()
+{
+    x1 = x2 = y1 = y2 = 0.0f;
+}
+
+//==============================================================================
 // GayageumString Implementation
 //==============================================================================
 
@@ -233,6 +351,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
         0.7f
     ));
     
+    // Body resonance control
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        "bodyResonance",
+        "Body Resonance",
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
+        0.5f
+    ));
+    
     return layout;
 }
 
@@ -309,6 +435,9 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
         string.prepare(sampleRate);
     }
     
+    // Initialize body resonator
+    bodyResonator.prepare(sampleRate);
+    
     // Default tuning for the 12 strings (traditional gayageum tuning)
     const float defaultTuning[12] = {
         164.81f,  // E3  - String 1
@@ -357,6 +486,10 @@ void Gayageum1AudioProcessor::updateStringParameters()
     {
         string.setDamping(damping);
     }
+    
+    // Update body resonance
+    float bodyResonance = apvts.getRawParameterValue("bodyResonance")->load();
+    bodyResonator.setResonanceAmount(bodyResonance);
 }
 
 void Gayageum1AudioProcessor::releaseResources()
@@ -441,6 +574,9 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
         
         // Scale output to prevent clipping (12 strings)
         output *= 0.15f;
+        
+        // Process through body resonator
+        output = bodyResonator.processSample(output);
         
         // Write to all output channels
         for (int channel = 0; channel < totalNumOutputChannels; ++channel)

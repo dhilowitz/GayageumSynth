@@ -60,6 +60,10 @@ private:
     juce::Slider dampingSlider;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> dampingAttachment;
     
+    juce::Label bodyResonanceLabel;
+    juce::Slider bodyResonanceSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> bodyResonanceAttachment;
+    
     // Info labels
     juce::Label infoLabel;
     

@@ -117,6 +117,22 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     dampingAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "damping", dampingSlider);
     
+    // Body resonance control
+    bodyResonanceLabel.setText("Body Resonance", juce::dontSendNotification);
+    bodyResonanceLabel.setFont(juce::FontOptions(14.0f, juce::Font::bold));
+    bodyResonanceLabel.setJustificationType(juce::Justification::centred);
+    bodyResonanceLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    addAndMakeVisible(bodyResonanceLabel);
+    
+    bodyResonanceSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+    bodyResonanceSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 80, 20);
+    bodyResonanceSlider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::sandybrown);
+    bodyResonanceSlider.setColour(juce::Slider::thumbColourId, juce::Colours::white);
+    addAndMakeVisible(bodyResonanceSlider);
+    
+    bodyResonanceAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "bodyResonance", bodyResonanceSlider);
+    
     // Info label
     infoLabel.setText("Move Anjok bridges (sliders) to tune each string. MIDI notes 60-71 (C4-B4) trigger strings 1-12.", 
                       juce::dontSendNotification);
@@ -179,8 +195,16 @@ void Gayageum1AudioProcessorEditor::resized()
     // Main content area
     auto contentArea = bounds.reduced(20, 10);
     
-    // Damping control on right
+    // Control area on right (both damping and body resonance)
     auto controlArea = contentArea.removeFromRight(150);
+    
+    // Body resonance control at top
+    auto bodyControl = controlArea.removeFromTop(controlArea.getHeight() / 2);
+    bodyControl = bodyControl.withSizeKeepingCentre(120, 150);
+    bodyResonanceLabel.setBounds(bodyControl.removeFromTop(25));
+    bodyResonanceSlider.setBounds(bodyControl);
+    
+    // Damping control at bottom
     controlArea = controlArea.withSizeKeepingCentre(120, 150);
     dampingLabel.setBounds(controlArea.removeFromTop(25));
     dampingSlider.setBounds(controlArea);

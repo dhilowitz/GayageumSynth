@@ -83,6 +83,47 @@ private:
 
 //==============================================================================
 /**
+    Body Resonator Model for Gayageum
+    Simulates the paulownia wood body resonances using parallel biquad filters
+*/
+class BodyResonator
+{
+public:
+    BodyResonator();
+    
+    void prepare(double sampleRate);
+    void reset();
+    
+    // Process input through body resonances
+    float processSample(float input);
+    
+    // Set the resonance strength (0.0 = no resonance, 1.0 = full resonance)
+    void setResonanceAmount(float amount);
+    
+private:
+    // Biquad filter for resonance peaks
+    struct ResonantFilter
+    {
+        float b0, b1, b2, a1, a2;  // Filter coefficients
+        float x1, x2, y1, y2;       // State variables
+        
+        ResonantFilter() : b0(1), b1(0), b2(0), a1(0), a2(0), x1(0), x2(0), y1(0), y2(0) {}
+        
+        void setResonance(double sampleRate, float frequency, float Q, float gain);
+        float process(float input);
+        void reset();
+    };
+    
+    // Multiple resonance peaks for the body
+    static constexpr int numResonances = 5;
+    std::array<ResonantFilter, numResonances> resonators;
+    
+    float resonanceAmount;
+    double sampleRate;
+};
+
+//==============================================================================
+/**
 */
 class Gayageum1AudioProcessor  : public juce::AudioProcessor
 {
@@ -136,6 +177,9 @@ private:
     // 12 strings for the gayageum
     static constexpr int numStrings = 12;
     std::array<GayageumString, numStrings> strings;
+    
+    // Body resonator
+    BodyResonator bodyResonator;
     
     double currentSampleRate = 44100.0;
     
