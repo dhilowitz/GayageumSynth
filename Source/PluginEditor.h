@@ -10,12 +10,14 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "StringControl.h"
+#include "TraditionalModePanel.h"
 
 //==============================================================================
 /**
+    Listener for play mode changes
 */
-class Gayageum1AudioProcessorEditor  : public juce::AudioProcessorEditor
+class Gayageum1AudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                       private juce::AudioProcessorParameter::Listener
 {
 public:
     Gayageum1AudioProcessorEditor (Gayageum1AudioProcessor&);
@@ -26,11 +28,16 @@ public:
     void resized() override;
 
 private:
+    // AudioProcessorParameter::Listener
+    void parameterValueChanged(int parameterIndex, float newValue) override;
+    void parameterGestureChanged(int parameterIndex, bool gestureIsStarting) override {}
+    
+    void updateModeVisibility();
+    
     Gayageum1AudioProcessor& audioProcessor;
     
-    // Visual components
-    static constexpr int numStrings = 12;
-    std::array<std::unique_ptr<StringControl>, numStrings> stringControls;
+    // Traditional mode panel
+    std::unique_ptr<TraditionalModePanel> traditionalPanel;
     
     // Global controls
     juce::Label titleLabel;

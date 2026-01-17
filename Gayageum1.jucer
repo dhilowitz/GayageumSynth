@@ -25,6 +25,10 @@
             file="Source/StringControl.cpp"/>
       <FILE id="SC5678" name="StringControl.h" compile="0" resource="0"
             file="Source/StringControl.h"/>
+      <FILE id="TM1234" name="TraditionalModePanel.cpp" compile="1" resource="0"
+            file="Source/TraditionalModePanel.cpp"/>
+      <FILE id="TM5678" name="TraditionalModePanel.h" compile="0" resource="0"
+            file="Source/TraditionalModePanel.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>

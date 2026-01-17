@@ -26,11 +26,14 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     titleLabel.setColour(juce::Label::textColourId, juce::Colours::gold);
     addAndMakeVisible(titleLabel);
     
-    // Create 12 string controls
-    for (int i = 0; i < numStrings; ++i)
+    // Create traditional mode panel with string controls
+    traditionalPanel = std::make_unique<TraditionalModePanel>(audioProcessor.apvts);
+    addAndMakeVisible(traditionalPanel.get());
+    
+    // Listen for play mode parameter changes
+    if (auto* param = audioProcessor.apvts.getParameter("playMode"))
     {
-        stringControls[i] = std::make_unique<StringControl>(i, audioProcessor.apvts);
-        addAndMakeVisible(stringControls[i].get());
+        param->addListener(this);
     }
     
     // Global damping control
@@ -108,6 +111,10 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
 
 Gayageum1AudioProcessorEditor::~Gayageum1AudioProcessorEditor()
 {
+    if (auto* param = audioProcessor.apvts.getParameter("playMode"))
+    {
+        param->removeListener(this);
+    }
 }
 
 //==============================================================================
@@ -121,16 +128,6 @@ void Gayageum1AudioProcessorEditor::paint (juce::Graphics& g)
         false);
     g.setGradientFill(gradient);
     g.fillAll();
-    
-    // Draw instrument body outline
-    auto bodyArea = bounds.reduced(20, 80);
-    bodyArea.removeFromRight(150); // Space for damping control
-    
-    g.setColour(juce::Colours::saddlebrown.withAlpha(0.3f));
-    g.fillRoundedRectangle(bodyArea.toFloat(), 10.0f);
-    
-    g.setColour(juce::Colours::peru.withAlpha(0.5f));
-    g.drawRoundedRectangle(bodyArea.toFloat(), 10.0f, 2.0f);
 }
 
 void Gayageum1AudioProcessorEditor::resized()
@@ -179,20 +176,24 @@ void Gayageum1AudioProcessorEditor::resized()
     dampingLabel.setBounds(controlArea.removeFromTop(25));
     dampingSlider.setBounds(controlArea);
     
-    // Strings area
-    auto stringsArea = contentArea.reduced(10, 5);
+    // Traditional mode panel (strings area)
+    traditionalPanel->setBounds(contentArea.reduced(0, 5));
     
-    if (stringsArea.getWidth() > 0 && numStrings > 0)
+    // Update visibility based on current mode
+    updateModeVisibility();
+}
+
+void Gayageum1AudioProcessorEditor::parameterValueChanged(int parameterIndex, float newValue)
+{
+    juce::MessageManager::callAsync([this]()
     {
-        int stringWidth = stringsArea.getWidth() / numStrings;
-        
-        for (int i = 0; i < numStrings; ++i)
-        {
-            if (stringControls[i] != nullptr)
-            {
-                auto stringBounds = stringsArea.removeFromLeft(stringWidth).reduced(2, 0);
-                stringControls[i]->setBounds(stringBounds);
-            }
-        }
-    }
+        updateModeVisibility();
+    });
+}
+
+void Gayageum1AudioProcessorEditor::updateModeVisibility()
+{
+    bool freePlayMode = audioProcessor.apvts.getRawParameterValue("playMode")->load() > 0.5f;
+    traditionalPanel->setVisible(!freePlayMode);
+    infoLabel.setVisible(!freePlayMode);
 }

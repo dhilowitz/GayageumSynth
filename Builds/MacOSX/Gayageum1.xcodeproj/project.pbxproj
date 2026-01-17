@@ -43,6 +43,7 @@
 		6A9D80BEA5B02CB1C188D5AA /* include_juce_audio_utils.mm */ = {isa = PBXBuildFile; fileRef = DF8501AE935C5EADC4B323FB; };
 		6ABD5F6058F4144E132DEDC3 /* Security.framework */ = {isa = PBXBuildFile; fileRef = B10D40B206B97F318C1CF430; };
 		70C3FBB66608E581D4A9A330 /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 39E947ED68CC94EE79BFA23A; settings = { ATTRIBUTES = (Weak, ); }; };
+		74C468D33559AA5C9F207E94 /* TraditionalModePanel.cpp */ = {isa = PBXBuildFile; fileRef = FD10E8901C204E77A6B36AFB; };
 		7777529B7AF76BA572527423 /* include_juce_audio_processors_ara.cpp */ = {isa = PBXBuildFile; fileRef = 2C0C357DDC6C21FCBCC8A05B; };
 		77DE1863DD250203F13EF6F3 /* include_juce_audio_processors.mm */ = {isa = PBXBuildFile; fileRef = D77296D14D7D3C52062A188B; };
 		782535434A1F9F50FD6A7FC1 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = 66434CCF761A6FCEBFA006B4; };
@@ -97,6 +98,7 @@
 		39E947ED68CC94EE79BFA23A /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		3B1211E61BAFB58569CC79CA /* include_juce_audio_plugin_client_AU_1.mm */ /* include_juce_audio_plugin_client_AU_1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_AU_1.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_AU_1.mm; sourceTree = SOURCE_ROOT; };
 		43ABA9A47681223226D9D6E7 /* BodyResonator.cpp */ /* BodyResonator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BodyResonator.cpp; path = ../../Source/BodyResonator.cpp; sourceTree = SOURCE_ROOT; };
+		4B378DC07869982930EBCA68 /* TraditionalModePanel.h */ /* TraditionalModePanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TraditionalModePanel.h; path = ../../Source/TraditionalModePanel.h; sourceTree = SOURCE_ROOT; };
 		4BE700F9680C341733EE5DB3 /* juce_audio_devices */ /* juce_audio_devices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_devices; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_devices; sourceTree = "<absolute>"; };
 		4D53138EA4F3469D7E7C89D1 /* PluginEditor.h */ /* PluginEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = SOURCE_ROOT; };
 		5717081B9636448E0E9ADCE9 /* include_juce_core_CompilationTime.cpp */ /* include_juce_core_CompilationTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_core_CompilationTime.cpp; path = ../../JuceLibraryCode/include_juce_core_CompilationTime.cpp; sourceTree = SOURCE_ROOT; };
@@ -147,6 +149,7 @@
 		FA100201CB6E681A2F9A6337 /* GayageumString.cpp */ /* GayageumString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GayageumString.cpp; path = ../../Source/GayageumString.cpp; sourceTree = SOURCE_ROOT; };
 		FB9904ED9348B36D1370E7F0 /* Info-Standalone_Plugin.plist */ /* Info-Standalone_Plugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = SOURCE_ROOT; };
 		FC4F184433645C41BC7CDD93 /* Info-VST3.plist */ /* Info-VST3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3.plist"; path = "Info-VST3.plist"; sourceTree = SOURCE_ROOT; };
+		FD10E8901C204E77A6B36AFB /* TraditionalModePanel.cpp */ /* TraditionalModePanel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TraditionalModePanel.cpp; path = ../../Source/TraditionalModePanel.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +305,8 @@
 				96F6D17AA05A070FF25C17E3,
 				001FB027148E585157D6E7BD,
 				CB02144495359562C79E8EAA,
+				FD10E8901C204E77A6B36AFB,
+				4B378DC07869982930EBCA68,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -734,6 +739,7 @@
 				00D977B4114EA1E197A8C82A,
 				9388883F8AD91DFBDB548AD1,
 				FEC64AD7B0F45531009F1EEA,
+				74C468D33559AA5C9F207E94,
 				9E597D06B68AA3AE3F0B3541,
 				F6E082B34CC3D37458956FD0,
 				AB04792EF88987DE154BBF0E,
