@@ -11,7 +11,7 @@
 #include "GayageumString.h"
 
 //==============================================================================
-GayageumString::GayageumString()
+G1GayageumString::G1GayageumString()
     : writeIndex(0)
     , currentDelay(100.0f)
     , targetDelay(100.0f)
@@ -31,13 +31,13 @@ GayageumString::GayageumString()
     excitationBuffer.fill(0.0f);
 }
 
-void GayageumString::prepare(double sr)
+void G1GayageumString::prepare(double sr)
 {
     sampleRate = sr;
     reset();
 }
 
-void GayageumString::reset()
+void G1GayageumString::reset()
 {
     delayLine.fill(0.0f);
     excitationBuffer.fill(0.0f);
@@ -47,7 +47,7 @@ void GayageumString::reset()
     isExciting = false;
 }
 
-void GayageumString::setFrequency(float frequency)
+void G1GayageumString::setFrequency(float frequency)
 {
     if (frequency > 0.0f && frequency < sampleRate / 2.0f)
     {
@@ -59,7 +59,7 @@ void GayageumString::setFrequency(float frequency)
     }
 }
 
-void GayageumString::setAnjokPosition(float position)
+void G1GayageumString::setAnjokPosition(float position)
 {
     // Position in meters, typically 0.3 to 0.9 from the paper
     anjokPosition = juce::jlimit(0.3f, 0.9f, position);
@@ -76,14 +76,14 @@ void GayageumString::setAnjokPosition(float position)
     }
 }
 
-void GayageumString::setAnjokSlope(float slope)
+void G1GayageumString::setAnjokSlope(float slope)
 {
     // Slope parameters from Table 1, Section 3.3
     // String 2: 887.980, String 5: 987.880, String 8: 1105.700, String 11: 1140.900
     anjokSlope = slope;
 }
 
-float GayageumString::calculateFrequencyFromAnjok()
+float G1GayageumString::calculateFrequencyFromAnjok()
 {
     // Section 3.3 - Leaky integrator method
     // This is the most accurate method from the paper
@@ -96,12 +96,12 @@ float GayageumString::calculateFrequencyFromAnjok()
     return frequency;
 }
 
-void GayageumString::setExcitationBlend(float blend)
+void G1GayageumString::setExcitationBlend(float blend)
 {
     excitationBlend = juce::jlimit(0.0f, 1.0f, blend);
 }
 
-void GayageumString::setDamping(float damping)
+void G1GayageumString::setDamping(float damping)
 {
     // damping: 0.0 = heavily damped (short decay), 1.0 = minimal damping (long decay)
     // Much more extreme range for dramatic effect
@@ -131,7 +131,7 @@ void GayageumString::setDamping(float damping)
     filterGain = juce::jlimit(0.93f, 0.99999f, compensatedGain);
 }
 
-void GayageumString::trigger(float velocity)
+void G1GayageumString::trigger(float velocity)
 {
     float vel = juce::jlimit(0.0f, 1.0f, velocity);
     
@@ -164,7 +164,7 @@ void GayageumString::trigger(float velocity)
     isExciting = true;
 }
 
-float GayageumString::onePoleFilter(float input)
+float G1GayageumString::onePoleFilter(float input)
 {
     // One-pole loop filter from Equation 6:
     // H(z) = g(1 + α1) / (1 + α1*z^-1)
@@ -173,7 +173,7 @@ float GayageumString::onePoleFilter(float input)
     return output;
 }
 
-float GayageumString::lagrangeInterpolation(float delayInSamples)
+float G1GayageumString::lagrangeInterpolation(float delayInSamples)
 {
     // 3rd-order Lagrange interpolation (N=3 in Equation 5)
     // This provides fractional delay for accurate pitch
@@ -201,7 +201,7 @@ float GayageumString::lagrangeInterpolation(float delayInSamples)
     return h0 * y[0] + h1 * y[1] + h2 * y[2] + h3 * y[3];
 }
 
-float GayageumString::processSample(float input)
+float G1GayageumString::processSample(float input)
 {
     // Smoothly interpolate to target delay (for Anjok movement)
     currentDelay += (targetDelay - currentDelay) * 0.001f;

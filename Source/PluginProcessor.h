@@ -66,10 +66,10 @@ private:
     //==============================================================================
     // 12 strings for the gayageum
     static constexpr int numStrings = 12;
-    std::array<GayageumString, numStrings> strings;
+    std::array<G1GayageumString, numStrings> strings;
     
     // Body resonator
-    BodyResonator bodyResonator;
+    G1BodyResonator bodyResonator;
     
     double currentSampleRate = 44100.0;
     

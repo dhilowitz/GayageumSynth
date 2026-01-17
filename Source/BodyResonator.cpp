@@ -11,13 +11,13 @@
 #include "BodyResonator.h"
 
 //==============================================================================
-BodyResonator::BodyResonator()
+G1BodyResonator::G1BodyResonator()
     : resonanceAmount(0.5f)
     , sampleRate(44100.0)
 {
 }
 
-void BodyResonator::prepare(double sr)
+void G1BodyResonator::prepare(double sr)
 {
     sampleRate = sr;
     
@@ -55,7 +55,7 @@ void BodyResonator::prepare(double sr)
     }
 }
 
-void BodyResonator::reset()
+void G1BodyResonator::reset()
 {
     for (auto& resonator : resonators)
     {
@@ -63,7 +63,7 @@ void BodyResonator::reset()
     }
 }
 
-float BodyResonator::processSample(float input)
+float G1BodyResonator::processSample(float input)
 {
     // Sum all resonant peaks
     float resonantOutput = 0.0f;
@@ -80,12 +80,12 @@ float BodyResonator::processSample(float input)
     return dry + wet;
 }
 
-void BodyResonator::setResonanceAmount(float amount)
+void G1BodyResonator::setResonanceAmount(float amount)
 {
     resonanceAmount = juce::jlimit(0.0f, 1.0f, amount);
 }
 
-void BodyResonator::ResonantFilter::setResonance(double sampleRate, float frequency, float Q, float gain)
+void G1BodyResonator::ResonantFilter::setResonance(double sampleRate, float frequency, float Q, float gain)
 {
     // Design a peaking EQ filter (biquad) for resonance
     float w0 = juce::MathConstants<float>::twoPi * frequency / static_cast<float>(sampleRate);
@@ -110,7 +110,7 @@ void BodyResonator::ResonantFilter::setResonance(double sampleRate, float freque
     a2 /= a0;
 }
 
-float BodyResonator::ResonantFilter::process(float input)
+float G1BodyResonator::ResonantFilter::process(float input)
 {
     // Direct Form II transposed
     float output = b0 * input + x1;
@@ -120,7 +120,7 @@ float BodyResonator::ResonantFilter::process(float input)
     return output;
 }
 
-void BodyResonator::ResonantFilter::reset()
+void G1BodyResonator::ResonantFilter::reset()
 {
     x1 = x2 = y1 = y2 = 0.0f;
 }

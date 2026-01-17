@@ -18,10 +18,10 @@
     Based on Cho et al. (2007) - "Development of string model whose delay line 
     length controlled by Anjok in gayageum"
 */
-class GayageumString
+class G1GayageumString
 {
 public:
-    GayageumString();
+    G1GayageumString();
     
     void prepare(double sampleRate);
     void reset();

@@ -17,10 +17,10 @@
     Body Resonance Model for Gayageum
     Simulates the paulownia wood body's resonant characteristics
 */
-class BodyResonator
+class G1BodyResonator
 {
 public:
-    BodyResonator();
+    G1BodyResonator();
     
     void prepare(double sampleRate);
     void reset();
