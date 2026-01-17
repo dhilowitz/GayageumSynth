@@ -133,6 +133,22 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     bodyResonanceAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "bodyResonance", bodyResonanceSlider);
     
+    // Excitation blend control
+    excitationLabel.setText("Excitation Type", juce::dontSendNotification);
+    excitationLabel.setFont(juce::FontOptions(14.0f, juce::Font::bold));
+    excitationLabel.setJustificationType(juce::Justification::centred);
+    excitationLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    addAndMakeVisible(excitationLabel);
+    
+    excitationSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+    excitationSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 80, 20);
+    excitationSlider.setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::lightgreen);
+    excitationSlider.setColour(juce::Slider::thumbColourId, juce::Colours::white);
+    addAndMakeVisible(excitationSlider);
+    
+    excitationAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "excitationBlend", excitationSlider);
+    
     // Info label
     infoLabel.setText("Move Anjok bridges (sliders) to tune each string. MIDI notes 60-71 (C4-B4) trigger strings 1-12.", 
                       juce::dontSendNotification);
@@ -195,17 +211,26 @@ void Gayageum1AudioProcessorEditor::resized()
     // Main content area
     auto contentArea = bounds.reduced(20, 10);
     
-    // Control area on right (both damping and body resonance)
+    // Control area on right (damping, body resonance, and excitation)
     auto controlArea = contentArea.removeFromRight(150);
     
-    // Body resonance control at top
-    auto bodyControl = controlArea.removeFromTop(controlArea.getHeight() / 2);
-    bodyControl = bodyControl.withSizeKeepingCentre(120, 150);
+    // Divide control area into thirds
+    int thirdHeight = controlArea.getHeight() / 3;
+    
+    // Excitation control at top
+    auto excitationControl = controlArea.removeFromTop(thirdHeight);
+    excitationControl = excitationControl.withSizeKeepingCentre(120, 140);
+    excitationLabel.setBounds(excitationControl.removeFromTop(25));
+    excitationSlider.setBounds(excitationControl);
+    
+    // Body resonance control in middle
+    auto bodyControl = controlArea.removeFromTop(thirdHeight);
+    bodyControl = bodyControl.withSizeKeepingCentre(120, 140);
     bodyResonanceLabel.setBounds(bodyControl.removeFromTop(25));
     bodyResonanceSlider.setBounds(bodyControl);
     
     // Damping control at bottom
-    controlArea = controlArea.withSizeKeepingCentre(120, 150);
+    controlArea = controlArea.withSizeKeepingCentre(120, 140);
     dampingLabel.setBounds(controlArea.removeFromTop(25));
     dampingSlider.setBounds(controlArea);
     

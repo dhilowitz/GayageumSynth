@@ -44,6 +44,9 @@ public:
     // Set damping characteristics
     void setDamping(float damping);
     
+    // Set excitation blend (0.0 = triangle, 1.0 = noise burst)
+    void setExcitationBlend(float blend);
+    
 private:
     // Lagrange interpolation for fractional delay
     float lagrangeInterpolation(float delayInSamples);
@@ -75,6 +78,7 @@ private:
     float anjokSlope;          // Slope parameter from Section 3.3
     float baseFrequency;       // Reference frequency at default position
     float currentFrequency;    // Current frequency for damping compensation
+    float excitationBlend;     // Blend between triangle (0.0) and noise (1.0)
     
     double sampleRate;
     

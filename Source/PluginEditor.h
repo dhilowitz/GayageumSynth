@@ -64,6 +64,10 @@ private:
     juce::Slider bodyResonanceSlider;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> bodyResonanceAttachment;
     
+    juce::Label excitationLabel;
+    juce::Slider excitationSlider;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> excitationAttachment;
+    
     // Info labels
     juce::Label infoLabel;
     

@@ -144,6 +144,7 @@ GayageumString::GayageumString()
     , anjokSlope(1000.0f)
     , baseFrequency(220.0f)
     , currentFrequency(220.0f)
+    , excitationBlend(1.0f)
     , sampleRate(44100.0)
 {
     delayLine.fill(0.0f);
@@ -215,6 +216,11 @@ float GayageumString::calculateFrequencyFromAnjok()
     return frequency;
 }
 
+void GayageumString::setExcitationBlend(float blend)
+{
+    excitationBlend = juce::jlimit(0.0f, 1.0f, blend);
+}
+
 void GayageumString::setDamping(float damping)
 {
     // damping: 0.0 = heavily damped (short decay), 1.0 = minimal damping (long decay)
@@ -247,27 +253,31 @@ void GayageumString::setDamping(float damping)
 
 void GayageumString::trigger(float velocity)
 {
-    // Create a simple pluck excitation signal
     float vel = juce::jlimit(0.0f, 1.0f, velocity);
     
     // Make excitation length proportional to the string's period
-    // This prevents cancellation in high-frequency strings
     int excitationLength = juce::jmin(128, static_cast<int>(targetDelay * 1.5f));
-    excitationLength = juce::jmax(10, excitationLength);  // At least 10 samples
+    excitationLength = juce::jmax(10, excitationLength);
     
     for (int i = 0; i < excitationBuffer.size(); ++i)
     {
+        float triangleValue = 0.0f;
+        float noiseValue = 0.0f;
+        
         if (i < excitationLength)
         {
-            // Noise burst for more realistic pluck with strong initial transient
+            // Triangle wave excitation (smoother, more tonal)
+            float phase = static_cast<float>(i) / excitationLength;
+            triangleValue = vel * (phase < 0.5f ? phase * 2.0f : 2.0f - phase * 2.0f);
+            
+            // Noise burst excitation (brighter, more percussive)
             float noise = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
             float envelope = 1.0f - (static_cast<float>(i) / excitationLength);
-            excitationBuffer[i] = vel * noise * envelope * 2.0f;  // Stronger excitation
+            noiseValue = vel * noise * envelope * 2.0f;
         }
-        else
-        {
-            excitationBuffer[i] = 0.0f;
-        }
+        
+        // Blend between triangle and noise based on excitationBlend parameter
+        excitationBuffer[i] = triangleValue * (1.0f - excitationBlend) + noiseValue * excitationBlend;
     }
     
     excitationIndex = 0;
@@ -398,6 +408,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
         0.5f
     ));
     
+    // Excitation blend control
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("excitationBlend",1),
+        "Excitation Type",
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
+        1.0f  // Default to noise burst
+    ));
+    
     return layout;
 }
 
@@ -524,6 +542,13 @@ void Gayageum1AudioProcessor::updateStringParameters()
     for (auto& string : strings)
     {
         string.setDamping(damping);
+    }
+    
+    // Update excitation blend
+    float excitationBlend = apvts.getRawParameterValue("excitationBlend")->load();
+    for (auto& string : strings)
+    {
+        string.setExcitationBlend(excitationBlend);
     }
     
     // Update body resonance
