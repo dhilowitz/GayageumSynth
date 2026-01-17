@@ -15,7 +15,7 @@ Gayageum1 is a JUCE-based audio plugin that implements a physical model of the g
   - Anjok position sliders control the pitch of each string independently
   - Traditional tuning range: E3 to F#5 (164.81 Hz to 739.99 Hz)
 
-- **Free Play Mode**: Chromatic polyphonic playback with up to 32 simultaneous voices
+- **Free Play Mode**: Chromatic polyphonic playback with up to 16 simultaneous voices
   - Full MIDI note range support
   - Polyphonic voice allocation with voice stealing
   - Direct MIDI-to-frequency conversion for accurate chromatic playback
@@ -41,7 +41,7 @@ Gayageum1 is a JUCE-based audio plugin that implements a physical model of the g
 
 ### Architecture
 
-- **Maximum Voices**: 32 polyphonic voices
+- **Maximum Voices**: 16 polyphonic voices
 - **Delay Line Length**: 4096 samples per voice
 - **Sample Rate**: 44.1 kHz (or host-defined)
 - **Voice Allocation**: Round-robin with voice stealing when all voices are in use
@@ -107,7 +107,7 @@ Key implementation details:
 1. Toggle "Free Play Mode" ON
 2. Play any MIDI note across the full keyboard range
 3. Anjok position controls are bypassed in this mode
-4. Supports up to 32 simultaneous notes
+4. Supports up to 16 simultaneous notes
 5. Global controls (damping, resonance, excitation) still apply
 
 ## Parameters
@@ -133,7 +133,7 @@ MIT License. See LICENSE file for details.
 ## Version History
 
 - **Current**: Dual-mode synthesizer with traditional and chromatic playback
-  - 32-voice polyphony in Free Play mode
+  - 16-voice polyphony in Free Play mode
   - Frequency-compensated damping
   - Mode-aware parameter updates
   - Modular class architecture (G1GayageumString, G1BodyResonator)

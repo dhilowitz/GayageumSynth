@@ -66,7 +66,7 @@ private:
     //==============================================================================
     // Voice management
     static constexpr int numStrings = 12;
-    static constexpr int maxVoices = 32;  // For free play mode
+    static constexpr int maxVoices = 16;  // For free play mode
     std::array<G1GayageumString, maxVoices> strings;
     
     // Voice allocation for free play mode
