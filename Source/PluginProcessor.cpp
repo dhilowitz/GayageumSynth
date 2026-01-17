@@ -382,7 +382,7 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
         }
         
         // Scale output to prevent clipping
-        output *= freePlayMode ? 0.08f : 0.15f;  // More scaling for more voices
+        output *= 0.15f;  // We use the same scaling factor for traditional and free mode, even though free mode has more voices.
         
         // Process through body resonator
         output = bodyResonator.processSample(output);
