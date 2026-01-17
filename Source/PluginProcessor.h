@@ -74,6 +74,7 @@ private:
     float anjokPosition;        // Position in meters (0.3 - 0.9)
     float anjokSlope;          // Slope parameter from Section 3.3
     float baseFrequency;       // Reference frequency at default position
+    float currentFrequency;    // Current frequency for damping compensation
     
     double sampleRate;
     

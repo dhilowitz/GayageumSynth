@@ -143,6 +143,7 @@ GayageumString::GayageumString()
     , anjokPosition(0.6f)
     , anjokSlope(1000.0f)
     , baseFrequency(220.0f)
+    , currentFrequency(220.0f)
     , sampleRate(44100.0)
 {
     delayLine.fill(0.0f);
@@ -170,6 +171,7 @@ void GayageumString::setFrequency(float frequency)
     if (frequency > 0.0f && frequency < sampleRate / 2.0f)
     {
         baseFrequency = frequency;
+        currentFrequency = frequency;
         // Delay length = fs / f0 (Equation 4 from the paper)
         targetDelay = static_cast<float>(sampleRate / frequency);
         targetDelay = juce::jlimit(2.0f, static_cast<float>(maxDelayLength - 1), targetDelay);
@@ -183,6 +185,7 @@ void GayageumString::setAnjokPosition(float position)
     
     // Recalculate frequency based on new Anjok position
     float newFrequency = calculateFrequencyFromAnjok();
+    currentFrequency = newFrequency;
     
     // Update delay length
     if (newFrequency > 0.0f && newFrequency < sampleRate / 2.0f)
@@ -221,23 +224,50 @@ void GayageumString::setDamping(float damping)
     filterCoeff = juce::jlimit(0.05f, 0.95f, damping * 0.95f + 0.05f);
     
     // Filter gain - controls overall decay time
-    // Low damping (0.0) = very short decay (0.93 feedback)
-    // High damping (1.0) = very long decay (0.9998 feedback)
-    float feedbackGain = 0.93f + damping * 0.0698f;  // Range: 0.93 to 0.9998
-    filterGain = juce::jlimit(0.93f, 0.9998f, feedbackGain);
+    // Frequency-compensated: all strings should have equal decay time in seconds
+    // Reference frequency: 165 Hz (lowest string)
+    float referenceFreq = 165.0f;
+    
+    // Base gain for reference frequency: 0.93 to 0.9999
+    float baseGain = 0.93f + damping * 0.0699f;
+    
+    // For equal decay time across all frequencies:
+    // If reference string loops at referenceFreq Hz with gain baseGain,
+    // and this string loops at currentFrequency Hz,
+    // then to have equal decay time: gain^currentFreq = baseGain^referenceFreq
+    // Therefore: gain = baseGain^(referenceFreq/currentFrequency)
+    // 
+    // Use a more aggressive exponent to compensate for the additional 0.9995 feedback in processSample
+    float exponent = referenceFreq / juce::jmax(currentFrequency, 1.0f);
+    exponent = exponent * 0.5f;  // Less aggressive - was making high strings sustain TOO long
+    float compensatedGain = std::pow(baseGain, exponent);
+    
+    filterGain = juce::jlimit(0.93f, 0.99999f, compensatedGain);
 }
 
 void GayageumString::trigger(float velocity)
 {
     // Create a simple pluck excitation signal
-    // In a real implementation, this could be more sophisticated
     float vel = juce::jlimit(0.0f, 1.0f, velocity);
+    
+    // Make excitation length proportional to the string's period
+    // This prevents cancellation in high-frequency strings
+    int excitationLength = juce::jmin(128, static_cast<int>(targetDelay * 1.5f));
+    excitationLength = juce::jmax(10, excitationLength);  // At least 10 samples
     
     for (int i = 0; i < excitationBuffer.size(); ++i)
     {
-        // Simple triangular pluck shape
-        float phase = static_cast<float>(i) / excitationBuffer.size();
-        excitationBuffer[i] = vel * (phase < 0.5f ? phase * 2.0f : 2.0f - phase * 2.0f);
+        if (i < excitationLength)
+        {
+            // Noise burst for more realistic pluck with strong initial transient
+            float noise = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
+            float envelope = 1.0f - (static_cast<float>(i) / excitationLength);
+            excitationBuffer[i] = vel * noise * envelope * 2.0f;  // Stronger excitation
+        }
+        else
+        {
+            excitationBuffer[i] = 0.0f;
+        }
     }
     
     excitationIndex = 0;
@@ -302,7 +332,8 @@ float GayageumString::processSample(float input)
     float filtered = onePoleFilter(delayOut);
     
     // Combine input, excitation, and feedback
-    float feedback = input + excitation + filtered * 0.995f;
+    // Higher feedback value to allow better sustain, especially for high strings
+    float feedback = input + excitation + filtered * 0.9995f;
     
     // Write to delay line
     delayLine[writeIndex] = feedback;
@@ -343,7 +374,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
         auto paramName = "String " + juce::String(i + 1) + " Anjok";
         
         layout.add(std::make_unique<juce::AudioParameterFloat>(
-            paramID,
+            juce::ParameterID(paramID, 1),
             paramName,
             juce::NormalisableRange<float>(0.3f, 0.9f, 0.001f),
             0.6f,  // Default position (middle)
@@ -353,7 +384,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
     
     // Global damping control
     layout.add(std::make_unique<juce::AudioParameterFloat>(
-        "damping",
+        juce::ParameterID("damping",1),
         "Damping",
         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
         0.7f
@@ -361,7 +392,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
     
     // Body resonance control
     layout.add(std::make_unique<juce::AudioParameterFloat>(
-        "bodyResonance",
+         juce::ParameterID("bodyResonance",1),
         "Body Resonance",
         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
         0.5f
@@ -471,8 +502,8 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
     {
         float slope = defaultTuning[i] * defaultPosition;
         strings[i].setAnjokSlope(slope);
-        strings[i].setAnjokPosition(defaultPosition);
-        strings[i].setDamping(0.7f);
+        strings[i].setAnjokPosition(defaultPosition);  // This sets currentFrequency via calculateFrequencyFromAnjok
+        strings[i].setDamping(0.7f);  // Apply damping AFTER frequency is set
     }
     
     updateStringParameters();
@@ -562,6 +593,8 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
             // MIDI note 60 (C4) maps to string 0, etc.
             int stringIndex = (noteNumber - 60) % numStrings;
             if (stringIndex < 0) stringIndex += numStrings;
+            
+            DBG("String " + juce::String(stringIndex) + "triggered.f");
             
             strings[stringIndex].trigger(velocity);
         }
