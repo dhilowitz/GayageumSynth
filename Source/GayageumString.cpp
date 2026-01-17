@@ -56,6 +56,9 @@ void G1GayageumString::setFrequency(float frequency)
         // Delay length = fs / f0 (Equation 4 from the paper)
         targetDelay = static_cast<float>(sampleRate / frequency);
         targetDelay = juce::jlimit(2.0f, static_cast<float>(maxDelayLength - 1), targetDelay);
+        // If we are calling setFrequency directly, it means we are in free play mode, in other words
+        // we don't want smoothing of delay changes
+        currentDelay = targetDelay;
     }
 }
 
