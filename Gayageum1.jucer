@@ -13,6 +13,14 @@
       <FILE id="NaYQMd" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="EGzfh1" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="GS1234" name="GayageumString.cpp" compile="1" resource="0"
+            file="Source/GayageumString.cpp"/>
+      <FILE id="GS5678" name="GayageumString.h" compile="0" resource="0"
+            file="Source/GayageumString.h"/>
+      <FILE id="BR1234" name="BodyResonator.cpp" compile="1" resource="0"
+            file="Source/BodyResonator.cpp"/>
+      <FILE id="BR5678" name="BodyResonator.h" compile="0" resource="0"
+            file="Source/BodyResonator.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
