@@ -22,6 +22,9 @@ GayageumString::GayageumString()
     , filterGain(0.999f)
     , excitationIndex(0)
     , isExciting(false)
+    , anjokPosition(0.6f)
+    , anjokSlope(1000.0f)
+    , baseFrequency(220.0f)
     , sampleRate(44100.0)
 {
     delayLine.fill(0.0f);
@@ -48,10 +51,47 @@ void GayageumString::setFrequency(float frequency)
 {
     if (frequency > 0.0f && frequency < sampleRate / 2.0f)
     {
+        baseFrequency = frequency;
         // Delay length = fs / f0 (Equation 4 from the paper)
         targetDelay = static_cast<float>(sampleRate / frequency);
         targetDelay = juce::jlimit(2.0f, static_cast<float>(maxDelayLength - 1), targetDelay);
     }
+}
+
+void GayageumString::setAnjokPosition(float position)
+{
+    // Position in meters, typically 0.3 to 0.9 from the paper
+    anjokPosition = juce::jlimit(0.3f, 0.9f, position);
+    
+    // Recalculate frequency based on new Anjok position
+    float newFrequency = calculateFrequencyFromAnjok();
+    
+    // Update delay length
+    if (newFrequency > 0.0f && newFrequency < sampleRate / 2.0f)
+    {
+        targetDelay = static_cast<float>(sampleRate / newFrequency);
+        targetDelay = juce::jlimit(2.0f, static_cast<float>(maxDelayLength - 1), targetDelay);
+    }
+}
+
+void GayageumString::setAnjokSlope(float slope)
+{
+    // Slope parameters from Table 1, Section 3.3
+    // String 2: 887.980, String 5: 987.880, String 8: 1105.700, String 11: 1140.900
+    anjokSlope = slope;
+}
+
+float GayageumString::calculateFrequencyFromAnjok()
+{
+    // Section 3.3 - Leaky integrator method
+    // This is the most accurate method from the paper
+    // The frequency is calculated using the slope parameter and position
+    
+    // The relationship is: f = slope / position
+    // This comes from the inverse relationship between string length and frequency
+    float frequency = anjokSlope / anjokPosition;
+    
+    return frequency;
 }
 
 void GayageumString::setDamping(float damping)
@@ -157,11 +197,43 @@ Gayageum1AudioProcessor::Gayageum1AudioProcessor()
                      #endif
                        )
 #endif
+    , apvts(*this, nullptr, "Parameters", createParameterLayout())
 {
 }
 
 Gayageum1AudioProcessor::~Gayageum1AudioProcessor()
 {
+}
+
+//==============================================================================
+juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::createParameterLayout()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout layout;
+    
+    // Create Anjok position parameters for each of the 12 strings
+    for (int i = 0; i < numStrings; ++i)
+    {
+        auto paramID = "anjok" + juce::String(i + 1);
+        auto paramName = "String " + juce::String(i + 1) + " Anjok";
+        
+        layout.add(std::make_unique<juce::AudioParameterFloat>(
+            paramID,
+            paramName,
+            juce::NormalisableRange<float>(0.3f, 0.9f, 0.001f),
+            0.6f,  // Default position (middle)
+            "m"    // Unit: meters
+        ));
+    }
+    
+    // Global damping control
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        "damping",
+        "Damping",
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f),
+        0.7f
+    ));
+    
+    return layout;
 }
 
 //==============================================================================
@@ -237,8 +309,7 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
         string.prepare(sampleRate);
     }
     
-    // Set default tuning for the 12 strings (approximate traditional tuning)
-    // These are typical frequencies for sanjo gayageum
+    // Default tuning for the 12 strings (traditional gayageum tuning)
     const float defaultTuning[12] = {
         164.81f,  // E3  - String 1
         185.00f,  // F#3 - String 2
@@ -254,10 +325,37 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
         739.99f   // F#5 - String 12
     };
     
+    // Default Anjok positions (middle of range, 0.6m)
+    const float defaultPosition = 0.6f;
+    
+    // Calculate slope for each string based on desired frequency and default position
+    // Using the formula: f = slope / position, so slope = f * position
     for (int i = 0; i < numStrings; ++i)
     {
-        strings[i].setFrequency(defaultTuning[i]);
+        float slope = defaultTuning[i] * defaultPosition;
+        strings[i].setAnjokSlope(slope);
+        strings[i].setAnjokPosition(defaultPosition);
         strings[i].setDamping(0.7f);
+    }
+    
+    updateStringParameters();
+}
+
+void Gayageum1AudioProcessor::updateStringParameters()
+{
+    // Update each string's Anjok position from parameters
+    for (int i = 0; i < numStrings; ++i)
+    {
+        auto paramID = "anjok" + juce::String(i + 1);
+        float position = apvts.getRawParameterValue(paramID)->load();
+        strings[i].setAnjokPosition(position);
+    }
+    
+    // Update global damping
+    float damping = apvts.getRawParameterValue("damping")->load();
+    for (auto& string : strings)
+    {
+        string.setDamping(damping);
     }
 }
 
@@ -305,6 +403,9 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
     // Clear output channels
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
+
+    // Update string parameters from APVTS (Anjok positions and damping)
+    updateStringParameters();
 
     // Process MIDI messages to trigger strings
     for (const auto metadata : midiMessages)
@@ -363,15 +464,18 @@ juce::AudioProcessorEditor* Gayageum1AudioProcessor::createEditor()
 //==============================================================================
 void Gayageum1AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    auto state = apvts.copyState();
+    std::unique_ptr<juce::XmlElement> xml (state.createXml());
+    copyXmlToBinary (*xml, destData);
 }
 
 void Gayageum1AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+    
+    if (xmlState.get() != nullptr)
+        if (xmlState->hasTagName (apvts.state.getType()))
+            apvts.replaceState (juce::ValueTree::fromXml (*xmlState));
 }
 
 //==============================================================================

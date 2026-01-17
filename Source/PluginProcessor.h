@@ -30,6 +30,14 @@ public:
     // Set the delay line length based on fundamental frequency
     void setFrequency(float frequency);
     
+    // Set Anjok position (movable bridge) which controls string length
+    // Position in meters: 0.3 to 0.9 (typical range from the paper)
+    void setAnjokPosition(float position);
+    
+    // Set the slope parameter for Anjok frequency calculation
+    // From Table 1, Section 3.3 of the paper
+    void setAnjokSlope(float slope);
+    
     // Trigger the string with an excitation signal
     void trigger(float velocity);
     
@@ -62,7 +70,15 @@ private:
     int excitationIndex;
     bool isExciting;
     
+    // Anjok (movable bridge) parameters
+    float anjokPosition;        // Position in meters (0.3 - 0.9)
+    float anjokSlope;          // Slope parameter from Section 3.3
+    float baseFrequency;       // Reference frequency at default position
+    
     double sampleRate;
+    
+    // Calculate frequency from Anjok position using leaky integrator method
+    float calculateFrequencyFromAnjok();
 };
 
 //==============================================================================
@@ -107,6 +123,13 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    //==============================================================================
+    // Get the parameter layout for APVTS
+    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    
+    // Public access to parameters for the editor
+    juce::AudioProcessorValueTreeState apvts;
 
 private:
     //==============================================================================
@@ -115,6 +138,9 @@ private:
     std::array<GayageumString, numStrings> strings;
     
     double currentSampleRate = 44100.0;
+    
+    // Update string parameters from APVTS
+    void updateStringParameters();
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Gayageum1AudioProcessor)
 };
