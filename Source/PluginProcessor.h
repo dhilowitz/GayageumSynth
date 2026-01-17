@@ -82,6 +82,9 @@ private:
     
     double currentSampleRate = 44100.0;
     
+    // Round-robin voice allocation
+    int nextVoiceIndex = 0;
+    
     // Update string parameters from APVTS
     void updateStringParameters();
     

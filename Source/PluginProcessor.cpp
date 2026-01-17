@@ -242,13 +242,9 @@ void Gayageum1AudioProcessor::updateStringParameters()
 
 int Gayageum1AudioProcessor::findFreeVoice()
 {
-    for (int i = 0; i < maxVoices; ++i)
-    {
-        if (voices[i].midiNote == -1)
-            return i;
-    }
-    // If no free voice, steal the oldest (voice 0)
-    return 0;
+    int voice = nextVoiceIndex;
+    nextVoiceIndex = (nextVoiceIndex + 1) % maxVoices;
+    return voice;
 }
 
 int Gayageum1AudioProcessor::findVoiceForNote(int midiNote)
