@@ -30,6 +30,10 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     traditionalPanel = std::make_unique<TraditionalModePanel>(audioProcessor.apvts);
     addAndMakeVisible(traditionalPanel.get());
     
+    // Create free play mode panel
+    freePlayPanel = std::make_unique<FreePlayModePanel>(audioProcessor.apvts);
+    addAndMakeVisible(freePlayPanel.get());
+    
     // Listen for play mode parameter changes
     if (auto* param = audioProcessor.apvts.getParameter("playMode"))
     {
@@ -179,6 +183,9 @@ void Gayageum1AudioProcessorEditor::resized()
     // Traditional mode panel (strings area)
     traditionalPanel->setBounds(contentArea.reduced(0, 5));
     
+    // Free play mode panel (same area)
+    freePlayPanel->setBounds(contentArea.reduced(0, 5));
+    
     // Update visibility based on current mode
     updateModeVisibility();
 }
@@ -195,5 +202,6 @@ void Gayageum1AudioProcessorEditor::updateModeVisibility()
 {
     bool freePlayMode = audioProcessor.apvts.getRawParameterValue("playMode")->load() > 0.5f;
     traditionalPanel->setVisible(!freePlayMode);
+    freePlayPanel->setVisible(freePlayMode);
     infoLabel.setVisible(!freePlayMode);
 }

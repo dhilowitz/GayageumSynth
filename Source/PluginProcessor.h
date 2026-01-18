@@ -74,6 +74,7 @@ private:
     {
         int midiNote = -1;  // -1 = voice not active
         int stringIndex = -1;
+        bool isSecondary = false;  // True if this is a doubled/detuned voice
     };
     std::array<Voice, maxVoices> voices;
     

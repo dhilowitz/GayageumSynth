@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "TraditionalModePanel.h"
+#include "FreePlayModePanel.h"
 
 //==============================================================================
 /**
@@ -38,6 +39,9 @@ private:
     
     // Traditional mode panel
     std::unique_ptr<TraditionalModePanel> traditionalPanel;
+    
+    // Free play mode panel
+    std::unique_ptr<FreePlayModePanel> freePlayPanel;
     
     // Global controls
     juce::Label titleLabel;

@@ -29,6 +29,10 @@
             file="Source/TraditionalModePanel.cpp"/>
       <FILE id="TM5678" name="TraditionalModePanel.h" compile="0" resource="0"
             file="Source/TraditionalModePanel.h"/>
+      <FILE id="FP1234" name="FreePlayModePanel.cpp" compile="1" resource="0"
+            file="Source/FreePlayModePanel.cpp"/>
+      <FILE id="FP5678" name="FreePlayModePanel.h" compile="0" resource="0"
+            file="Source/FreePlayModePanel.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>

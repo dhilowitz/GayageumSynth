@@ -80,6 +80,22 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
         false  // Default to traditional mode
     ));
     
+    // String doubling control (free play mode only)
+    layout.add(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("doubleStrings",1),
+        "Double Strings",
+        false  // Default to single strings
+    ));
+    
+    // Detune amount for doubled strings (free play mode only)
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("doubleDetune",1),
+        "Double Detune",
+        juce::NormalisableRange<float>(-12.0f, 12.0f, 0.01f),
+        0.1f,  // Default to slight detune (10 cents)
+        "semitones"
+    ));
+    
     return layout;
 }
 
@@ -220,6 +236,28 @@ void Gayageum1AudioProcessor::updateStringParameters()
             strings[i].setAnjokPosition(position);
         }
     }
+    else
+    {
+        // Free play mode: update detune for active secondary voices
+        float detuneSemitones = apvts.getRawParameterValue("doubleDetune")->load();
+        
+        for (int i = 0; i < maxVoices; ++i)
+        {
+            if (voices[i].midiNote != -1 && voices[i].isSecondary)
+            {
+                // Recalculate detuned frequency from MIDI note
+                int midiNote = voices[i].midiNote;
+                float baseFrequency = 440.0f * std::pow(2.0f, (midiNote - 69) / 12.0f);
+                float detunedFrequency = baseFrequency * std::pow(2.0f, detuneSemitones / 12.0f);
+                
+                strings[i].setFrequency(detunedFrequency);
+                
+                // Reapply damping after frequency change
+                float damping = apvts.getRawParameterValue("damping")->load();
+                strings[i].setDamping(damping);
+            }
+        }
+    }
     
     // Update global damping (both modes)
     float damping = apvts.getRawParameterValue("damping")->load();
@@ -320,10 +358,15 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
             
             if (freePlayMode)
             {
-                // Free play mode: allocate a voice and set frequency directly from MIDI note
+                // Free play mode: allocate voice(s) and set frequency directly from MIDI note
+                bool doubleStrings = apvts.getRawParameterValue("doubleStrings")->load() > 0.5f;
+                float detuneSemitones = apvts.getRawParameterValue("doubleDetune")->load();
+                
+                // Primary voice
                 int voiceIndex = findFreeVoice();
                 voices[voiceIndex].midiNote = noteNumber;
                 voices[voiceIndex].stringIndex = voiceIndex;
+                voices[voiceIndex].isSecondary = false;
                 
                 // Calculate frequency from MIDI note number: f = 440 * 2^((n-69)/12)
                 float frequency = 440.0f * std::pow(2.0f, (noteNumber - 69) / 12.0f);
@@ -334,6 +377,21 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
                 strings[voiceIndex].setDamping(damping);
                 
                 strings[voiceIndex].trigger(velocity);
+                
+                // Secondary voice (if doubling enabled)
+                if (doubleStrings)
+                {
+                    int voiceIndex2 = findFreeVoice();
+                    voices[voiceIndex2].midiNote = noteNumber;  // Same MIDI note for both
+                    voices[voiceIndex2].stringIndex = voiceIndex2;
+                    voices[voiceIndex2].isSecondary = true;
+                    
+                    // Calculate detuned frequency: multiply by 2^(detune/12)
+                    float detunedFrequency = frequency * std::pow(2.0f, detuneSemitones / 12.0f);
+                    strings[voiceIndex2].setFrequency(detunedFrequency);
+                    strings[voiceIndex2].setDamping(damping);
+                    strings[voiceIndex2].trigger(velocity);
+                }
             }
             else
             {
