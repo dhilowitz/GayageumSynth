@@ -1,10 +1,10 @@
-# Gayageum1
+# GayageumSynth
 
 A digital waveguide physical modeling synthesizer that simulates the Korean gayageum (가야금), a traditional 12-string zither instrument.
 
 ## Overview
 
-Gayageum1 is a JUCE-based audio plugin that implements a physical model of the gayageum using digital waveguide synthesis techniques. The synthesis engine is based on research by Cho et al. (2007) and employs the Karplus-Strong algorithm with Lagrange interpolation for accurate pitch control.
+GayageumSynth is a JUCE-based audio plugin that implements a physical model of the gayageum using digital waveguide synthesis techniques. The synthesis engine is based on research by Cho et al. (2007) and employs the Karplus-Strong algorithm with Lagrange interpolation for accurate pitch control.
 
 ## Features
 
@@ -50,8 +50,8 @@ Gayageum1 is a JUCE-based audio plugin that implements a physical model of the g
 
 - `G1GayageumString`: Individual string/voice implementation with digital waveguide synthesis
 - `G1BodyResonator`: Multi-band resonant filter for body simulation
-- `Gayageum1AudioProcessor`: Main plugin processor handling MIDI, voice management, and synthesis
-- `Gayageum1AudioProcessorEditor`: GUI with parameter controls and mode toggle
+- `GayageumSynthAudioProcessor`: Main plugin processor handling MIDI, voice management, and synthesis
+- `GayageumSynthAudioProcessorEditor`: GUI with parameter controls and mode toggle
 
 ### Research Foundation
 
@@ -75,13 +75,13 @@ Key implementation details:
 
 ### Build Instructions
 
-1. Open `Gayageum1.jucer` in Projucer (if project files need regeneration)
+1. Open `GayageumSynth.jucer` in Projucer (if project files need regeneration)
 2. Save and open in your IDE (Xcode on macOS)
 3. Build the project:
    ```bash
    cd Builds/MacOSX
-   xcodebuild -project Gayageum1.xcodeproj \
-              -scheme "Gayageum1 - Standalone Plugin" \
+   xcodebuild -project GayageumSynth.xcodeproj \
+              -scheme "GayageumSynth - Standalone Plugin" \
               -configuration Debug build
    ```
 4. The built plugin will be in `Builds/MacOSX/build/Debug/`
@@ -140,4 +140,4 @@ MIT License. See LICENSE file for details.
 
 ---
 
-*Gayageum1 - Digital Waveguide Physical Modeling Synthesizer*
+*GayageumSynth - Digital Waveguide Physical Modeling Synthesizer*
