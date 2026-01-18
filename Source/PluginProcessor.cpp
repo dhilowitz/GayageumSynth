@@ -34,6 +34,23 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     
+    // Default Anjok positions (graduated like a real gayageum)
+    // Lower strings have anjoks further from bridge, higher strings closer
+    const float defaultPositions[12] = {
+        0.75f,  // String 1 (lowest)
+        0.72f,  // String 2
+        0.69f,  // String 3
+        0.66f,  // String 4
+        0.63f,  // String 5
+        0.60f,  // String 6
+        0.57f,  // String 7
+        0.54f,  // String 8
+        0.51f,  // String 9
+        0.48f,  // String 10
+        0.46f,  // String 11
+        0.45f   // String 12 (highest)
+    };
+    
     // Create Anjok position parameters for each of the 12 strings
     for (int i = 0; i < numStrings; ++i)
     {
@@ -44,7 +61,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
             juce::ParameterID(paramID, 1),
             paramName,
             juce::NormalisableRange<float>(0.3f, 0.9f, 0.001f),
-            0.6f,  // Default position (middle)
+            defaultPositions[i],  // Use graduated default positions
             "m"    // Unit: meters
         ));
     }
@@ -198,16 +215,30 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
         739.99f   // F#5 - String 12
     };
     
-    // Default Anjok positions (middle of range, 0.6m)
-    const float defaultPosition = 0.6f;
+    // Default Anjok positions (graduated like a real gayageum)
+    // Lower strings have anjoks further from bridge, higher strings closer
+    const float defaultPositions[12] = {
+        0.75f,  // String 1 (lowest)
+        0.72f,  // String 2
+        0.69f,  // String 3
+        0.66f,  // String 4
+        0.63f,  // String 5
+        0.60f,  // String 6
+        0.57f,  // String 7
+        0.54f,  // String 8
+        0.51f,  // String 9
+        0.48f,  // String 10
+        0.46f,  // String 11
+        0.45f   // String 12 (highest)
+    };
     
-    // Calculate slope for each string based on desired frequency and default position
+    // Calculate slope for each string based on desired frequency and its specific default position
     // Using the formula: f = slope / position, so slope = f * position
     for (int i = 0; i < numStrings; ++i)
     {
-        float slope = defaultTuning[i] * defaultPosition;
+        float slope = defaultTuning[i] * defaultPositions[i];
         strings[i].setAnjokSlope(slope);
-        strings[i].setAnjokPosition(defaultPosition);  // This sets currentFrequency via calculateFrequencyFromAnjok
+        strings[i].setAnjokPosition(defaultPositions[i]);  // This sets currentFrequency via calculateFrequencyFromAnjok
         strings[i].setDamping(0.7f);  // Apply damping AFTER frequency is set
     }
     
@@ -425,6 +456,14 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
     int numSamples = buffer.getNumSamples();
     int activeVoices = freePlayMode ? maxVoices : numStrings;
     
+    // Determine output scaling based on mode and doubling
+    float outputScale = 0.15f;  // Default for traditional mode
+    if (freePlayMode)
+    {
+        bool doubleStrings = apvts.getRawParameterValue("doubleStrings")->load() > 0.5f;
+        outputScale = doubleStrings ? 0.08f : 0.15f;
+    }
+    
     for (int sample = 0; sample < numSamples; ++sample)
     {
         float output = 0.0f;
@@ -436,7 +475,7 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
         }
         
         // Scale output to prevent clipping
-        output *= 0.15f;  // We use the same scaling factor for traditional and free mode, even though free mode has more voices.
+        output *= outputScale;
         
         // Process through body resonator
         output = bodyResonator.processSample(output);
