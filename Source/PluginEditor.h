@@ -17,12 +17,12 @@
 /**
     Listener for play mode changes
 */
-class Gayageum1AudioProcessorEditor  : public juce::AudioProcessorEditor,
+class GayageumSynthAudioProcessorEditor  : public juce::AudioProcessorEditor,
                                        private juce::AudioProcessorParameter::Listener
 {
 public:
-    Gayageum1AudioProcessorEditor (Gayageum1AudioProcessor&);
-    ~Gayageum1AudioProcessorEditor() override;
+    GayageumSynthAudioProcessorEditor (GayageumSynthAudioProcessor&);
+    ~GayageumSynthAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -35,7 +35,7 @@ private:
     
     void updateModeVisibility();
     
-    Gayageum1AudioProcessor& audioProcessor;
+    GayageumSynthAudioProcessor& audioProcessor;
     
     // Traditional mode panel
     std::unique_ptr<TraditionalModePanel> traditionalPanel;
@@ -68,5 +68,5 @@ private:
     juce::ResizableCornerComponent resizer;
     juce::ComponentBoundsConstrainer resizeConstraints;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Gayageum1AudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GayageumSynthAudioProcessorEditor)
 };

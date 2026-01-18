@@ -11,7 +11,7 @@
 
 //==============================================================================
 
-Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProcessor& p)
+GayageumSynthAudioProcessorEditor::GayageumSynthAudioProcessorEditor (GayageumSynthAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
     , resizer(this, &resizeConstraints)
 {
@@ -113,7 +113,7 @@ Gayageum1AudioProcessorEditor::Gayageum1AudioProcessorEditor (Gayageum1AudioProc
     setResizable(true, true);
 }
 
-Gayageum1AudioProcessorEditor::~Gayageum1AudioProcessorEditor()
+GayageumSynthAudioProcessorEditor::~GayageumSynthAudioProcessorEditor()
 {
     if (auto* param = audioProcessor.apvts.getParameter("playMode"))
     {
@@ -122,7 +122,7 @@ Gayageum1AudioProcessorEditor::~Gayageum1AudioProcessorEditor()
 }
 
 //==============================================================================
-void Gayageum1AudioProcessorEditor::paint (juce::Graphics& g)
+void GayageumSynthAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // Background gradient
     auto bounds = getLocalBounds();
@@ -134,7 +134,7 @@ void Gayageum1AudioProcessorEditor::paint (juce::Graphics& g)
     g.fillAll();
 }
 
-void Gayageum1AudioProcessorEditor::resized()
+void GayageumSynthAudioProcessorEditor::resized()
 {
     auto bounds = getLocalBounds();
     
@@ -190,7 +190,7 @@ void Gayageum1AudioProcessorEditor::resized()
     updateModeVisibility();
 }
 
-void Gayageum1AudioProcessorEditor::parameterValueChanged(int parameterIndex, float newValue)
+void GayageumSynthAudioProcessorEditor::parameterValueChanged(int parameterIndex, float newValue)
 {
     juce::MessageManager::callAsync([this]()
     {
@@ -198,7 +198,7 @@ void Gayageum1AudioProcessorEditor::parameterValueChanged(int parameterIndex, fl
     });
 }
 
-void Gayageum1AudioProcessorEditor::updateModeVisibility()
+void GayageumSynthAudioProcessorEditor::updateModeVisibility()
 {
     bool freePlayMode = audioProcessor.apvts.getRawParameterValue("playMode")->load() > 0.5f;
     traditionalPanel->setVisible(!freePlayMode);

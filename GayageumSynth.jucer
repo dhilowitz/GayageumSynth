@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="gDAZFn" name="Gayageum1" projectType="audioplug" useAppConfig="0"
+<JUCERPROJECT id="gDAZFn" name="GayageumSynth" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Decidedly"
-              bundleIdentifier="ly.decided.Gayageum1" pluginManufacturerCode="Dldy"
+              bundleIdentifier="ly.decided.GayageumSynth" pluginManufacturerCode="Dldy"
               pluginCode="Gyg1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
-  <MAINGROUP id="yw9Quz" name="Gayageum1">
+  <MAINGROUP id="yw9Quz" name="GayageumSynth">
     <GROUP id="{3EF6E81A-CC37-AA1D-818D-1D5079CED492}" name="Source">
       <FILE id="A9tIWC" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -19,12 +19,10 @@
             file="Source/GayageumString.h"/>
       <FILE id="BR1234" name="BodyResonator.cpp" compile="1" resource="0"
             file="Source/BodyResonator.cpp"/>
-      <FILE id="BR5678" name="BodyResonator.h" compile="0" resource="0"
-            file="Source/BodyResonator.h"/>
+      <FILE id="BR5678" name="BodyResonator.h" compile="0" resource="0" file="Source/BodyResonator.h"/>
       <FILE id="SC1234" name="StringControl.cpp" compile="1" resource="0"
             file="Source/StringControl.cpp"/>
-      <FILE id="SC5678" name="StringControl.h" compile="0" resource="0"
-            file="Source/StringControl.h"/>
+      <FILE id="SC5678" name="StringControl.h" compile="0" resource="0" file="Source/StringControl.h"/>
       <FILE id="TM1234" name="TraditionalModePanel.cpp" compile="1" resource="0"
             file="Source/TraditionalModePanel.cpp"/>
       <FILE id="TM5678" name="TraditionalModePanel.h" compile="0" resource="0"
@@ -54,8 +52,8 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="Gayageum1"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="Gayageum1"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="GayageumSynth"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="GayageumSynth"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../../../../SDKs/JUCE/modules"/>

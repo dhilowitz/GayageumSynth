@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-Gayageum1AudioProcessor::Gayageum1AudioProcessor()
+GayageumSynthAudioProcessor::GayageumSynthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
@@ -25,12 +25,12 @@ Gayageum1AudioProcessor::Gayageum1AudioProcessor()
 {
 }
 
-Gayageum1AudioProcessor::~Gayageum1AudioProcessor()
+GayageumSynthAudioProcessor::~GayageumSynthAudioProcessor()
 {
 }
 
 //==============================================================================
-juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::createParameterLayout()
+juce::AudioProcessorValueTreeState::ParameterLayout GayageumSynthAudioProcessor::createParameterLayout()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     
@@ -117,12 +117,12 @@ juce::AudioProcessorValueTreeState::ParameterLayout Gayageum1AudioProcessor::cre
 }
 
 //==============================================================================
-const juce::String Gayageum1AudioProcessor::getName() const
+const juce::String GayageumSynthAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool Gayageum1AudioProcessor::acceptsMidi() const
+bool GayageumSynthAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -131,7 +131,7 @@ bool Gayageum1AudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool Gayageum1AudioProcessor::producesMidi() const
+bool GayageumSynthAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -140,7 +140,7 @@ bool Gayageum1AudioProcessor::producesMidi() const
    #endif
 }
 
-bool Gayageum1AudioProcessor::isMidiEffect() const
+bool GayageumSynthAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -149,37 +149,37 @@ bool Gayageum1AudioProcessor::isMidiEffect() const
    #endif
 }
 
-double Gayageum1AudioProcessor::getTailLengthSeconds() const
+double GayageumSynthAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int Gayageum1AudioProcessor::getNumPrograms()
+int GayageumSynthAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int Gayageum1AudioProcessor::getCurrentProgram()
+int GayageumSynthAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void Gayageum1AudioProcessor::setCurrentProgram (int index)
+void GayageumSynthAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const juce::String Gayageum1AudioProcessor::getProgramName (int index)
+const juce::String GayageumSynthAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void Gayageum1AudioProcessor::changeProgramName (int index, const juce::String& newName)
+void GayageumSynthAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
 //==============================================================================
-void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void GayageumSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     currentSampleRate = sampleRate;
     
@@ -252,7 +252,7 @@ void Gayageum1AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
     updateStringParameters();
 }
 
-void Gayageum1AudioProcessor::updateStringParameters()
+void GayageumSynthAudioProcessor::updateStringParameters()
 {
     // Check play mode
     bool freePlayMode = apvts.getRawParameterValue("playMode")->load() > 0.5f;
@@ -309,14 +309,14 @@ void Gayageum1AudioProcessor::updateStringParameters()
     bodyResonator.setResonanceAmount(bodyResonance);
 }
 
-int Gayageum1AudioProcessor::findFreeVoice()
+int GayageumSynthAudioProcessor::findFreeVoice()
 {
     int voice = nextVoiceIndex;
     nextVoiceIndex = (nextVoiceIndex + 1) % maxVoices;
     return voice;
 }
 
-int Gayageum1AudioProcessor::findVoiceForNote(int midiNote)
+int GayageumSynthAudioProcessor::findVoiceForNote(int midiNote)
 {
     for (int i = 0; i < maxVoices; ++i)
     {
@@ -326,7 +326,7 @@ int Gayageum1AudioProcessor::findVoiceForNote(int midiNote)
     return -1;
 }
 
-void Gayageum1AudioProcessor::releaseResources()
+void GayageumSynthAudioProcessor::releaseResources()
 {
     // Reset all strings when playback stops
     for (auto& string : strings)
@@ -336,7 +336,7 @@ void Gayageum1AudioProcessor::releaseResources()
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool Gayageum1AudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool GayageumSynthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -361,7 +361,7 @@ bool Gayageum1AudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts
 }
 #endif
 
-void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void GayageumSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
@@ -489,25 +489,25 @@ void Gayageum1AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
 }
 
 //==============================================================================
-bool Gayageum1AudioProcessor::hasEditor() const
+bool GayageumSynthAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* Gayageum1AudioProcessor::createEditor()
+juce::AudioProcessorEditor* GayageumSynthAudioProcessor::createEditor()
 {
-    return new Gayageum1AudioProcessorEditor (*this);
+    return new GayageumSynthAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void Gayageum1AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void GayageumSynthAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     auto state = apvts.copyState();
     std::unique_ptr<juce::XmlElement> xml (state.createXml());
     copyXmlToBinary (*xml, destData);
 }
 
-void Gayageum1AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void GayageumSynthAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
     
@@ -520,5 +520,5 @@ void Gayageum1AudioProcessor::setStateInformation (const void* data, int sizeInB
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new Gayageum1AudioProcessor();
+    return new GayageumSynthAudioProcessor();
 }

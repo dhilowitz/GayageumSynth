@@ -15,12 +15,12 @@
 //==============================================================================
 /**
 */
-class Gayageum1AudioProcessor  : public juce::AudioProcessor
+class GayageumSynthAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    Gayageum1AudioProcessor();
-    ~Gayageum1AudioProcessor() override;
+    GayageumSynthAudioProcessor();
+    ~GayageumSynthAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -93,5 +93,5 @@ private:
     int findFreeVoice();
     int findVoiceForNote(int midiNote);
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Gayageum1AudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GayageumSynthAudioProcessor)
 };

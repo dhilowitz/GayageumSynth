@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		CCA6C83EAFE74846CF4F15B6 /* Gayageum1 - All */ = {
+		CCA6C83EAFE74846CF4F15B6 /* GayageumSynth - All */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 8DA232C8255FF4E33324EC42;
 			buildPhases = (
@@ -19,8 +19,8 @@
 				C549790E6D2EF0DDD16F9BC5,
 				5BE41FFA760CAAB237E1A882,
 			);
-			name = "Gayageum1 - All";
-			productName = Gayageum1;
+			name = "GayageumSynth - All";
+			productName = GayageumSynth;
 		};
 /* End PBXAggregateTarget section */
 
@@ -85,7 +85,7 @@
 		0CA4830BB96765BF80B749B0 /* DiscRecording.framework */ /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		0E97D5368FD4FBCDA196CDF9 /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		1B1CF335EF7504A0CF7215DB /* JucePluginDefines.h */ /* JucePluginDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JucePluginDefines.h; path = ../../JuceLibraryCode/JucePluginDefines.h; sourceTree = SOURCE_ROOT; };
-		1E21E6E70DA43AC18661DFB0 /* Shared Code */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGayageum1.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E21E6E70DA43AC18661DFB0 /* Shared Code */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGayageumSynth.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C699ECB9468A06E35EAF4D /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		24B818954650D841BEF5D9D4 /* include_juce_graphics_Sheenbidi.c */ /* include_juce_graphics_Sheenbidi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_graphics_Sheenbidi.c; path = ../../JuceLibraryCode/include_juce_graphics_Sheenbidi.c; sourceTree = SOURCE_ROOT; };
 		24FABA6FD3FB9E56F1F50740 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -105,7 +105,7 @@
 		5717081B9636448E0E9ADCE9 /* include_juce_core_CompilationTime.cpp */ /* include_juce_core_CompilationTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_core_CompilationTime.cpp; path = ../../JuceLibraryCode/include_juce_core_CompilationTime.cpp; sourceTree = SOURCE_ROOT; };
 		58078E657322A8F708693A4C /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		589CDD8612CC67B1589429D7 /* WebKit.framework */ /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		6455700062ECCD8DF4B6A2D1 /* VST3 */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Gayageum1.vst3; sourceTree = BUILT_PRODUCTS_DIR; };
+		6455700062ECCD8DF4B6A2D1 /* VST3 */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GayageumSynth.vst3; sourceTree = BUILT_PRODUCTS_DIR; };
 		652ED7C5BF096EDA70BBCB40 /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_core; sourceTree = "<absolute>"; };
 		66434CCF761A6FCEBFA006B4 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		69115B40D0F6F8939C2A2D03 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_events; sourceTree = "<absolute>"; };
@@ -142,13 +142,13 @@
 		CBDAF082E6F6B8B5135E539E /* include_juce_audio_devices.mm */ /* include_juce_audio_devices.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_devices.mm; path = ../../JuceLibraryCode/include_juce_audio_devices.mm; sourceTree = SOURCE_ROOT; };
 		CD8A7D3A5794DEC56D305E06 /* Accelerate.framework */ /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D0BF7ED508CE55567088E62A /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
-		D31B836CBEE4253CBD76B263 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Gayageum1.component; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31B836CBEE4253CBD76B263 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GayageumSynth.component; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3EA37B66226EFF63A7F9127 /* GayageumString.h */ /* GayageumString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GayageumString.h; path = ../../Source/GayageumString.h; sourceTree = SOURCE_ROOT; };
 		D77296D14D7D3C52062A188B /* include_juce_audio_processors.mm */ /* include_juce_audio_processors.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_processors.mm; path = ../../JuceLibraryCode/include_juce_audio_processors.mm; sourceTree = SOURCE_ROOT; };
 		DA29E6981D5D6ADDFC838F30 /* PluginProcessor.cpp */ /* PluginProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginProcessor.cpp; path = ../../Source/PluginProcessor.cpp; sourceTree = SOURCE_ROOT; };
 		DF8501AE935C5EADC4B323FB /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		DFEA042270BC9748813FECD4 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
-		F754E580F68D8CE3D4CA3D91 /* Standalone Plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gayageum1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F754E580F68D8CE3D4CA3D91 /* Standalone Plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GayageumSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA100201CB6E681A2F9A6337 /* GayageumString.cpp */ /* GayageumString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GayageumString.cpp; path = ../../Source/GayageumString.cpp; sourceTree = SOURCE_ROOT; };
 		FB9904ED9348B36D1370E7F0 /* Info-Standalone_Plugin.plist */ /* Info-Standalone_Plugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = SOURCE_ROOT; };
 		FC4F184433645C41BC7CDD93 /* Info-VST3.plist */ /* Info-VST3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3.plist"; path = "Info-VST3.plist"; sourceTree = SOURCE_ROOT; };
@@ -274,12 +274,12 @@
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
 		};
-		28880F97DDA0E6DB33AD3D26 /* Gayageum1 */ = {
+		28880F97DDA0E6DB33AD3D26 /* GayageumSynth */ = {
 			isa = PBXGroup;
 			children = (
 				2B75BA78DF3813BA095C9DE7,
 			);
-			name = Gayageum1;
+			name = GayageumSynth;
 			sourceTree = "<group>";
 		};
 		291B0AF0DF3F6DD9280E72BC /* Source */ = {
@@ -384,7 +384,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01004F361E87CCFA1060BF2C /* Gayageum1 - AU */ = {
+		01004F361E87CCFA1060BF2C /* GayageumSynth - AU */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2934F0C27155F93CBCF0F03B;
 			buildPhases = (
@@ -398,12 +398,12 @@
 			dependencies = (
 				9BDFC1B654C5624DD6AF5DC3,
 			);
-			name = "Gayageum1 - AU";
-			productName = Gayageum1;
+			name = "GayageumSynth - AU";
+			productName = GayageumSynth;
 			productReference = D31B836CBEE4253CBD76B263;
 			productType = "com.apple.product-type.bundle";
 		};
-		3DC82BF35BCA34BD707D76FE /* Gayageum1 - Shared Code */ = {
+		3DC82BF35BCA34BD707D76FE /* GayageumSynth - Shared Code */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F5EC4BB48CA48C627C11F02;
 			buildPhases = (
@@ -413,12 +413,12 @@
 			);
 			dependencies = (
 			);
-			name = "Gayageum1 - Shared Code";
-			productName = Gayageum1;
+			name = "GayageumSynth - Shared Code";
+			productName = GayageumSynth;
 			productReference = 1E21E6E70DA43AC18661DFB0;
 			productType = "com.apple.product-type.library.static";
 		};
-		A8F385518AB43EF66D8F9847 /* Gayageum1 - VST3 */ = {
+		A8F385518AB43EF66D8F9847 /* GayageumSynth - VST3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC877E4C9AEB4CF32E7A202B;
 			buildPhases = (
@@ -434,12 +434,12 @@
 				9F869515635DE69034A9897F,
 				A3797738D2FCF1410D23F525,
 			);
-			name = "Gayageum1 - VST3";
-			productName = Gayageum1;
+			name = "GayageumSynth - VST3";
+			productName = GayageumSynth;
 			productReference = 6455700062ECCD8DF4B6A2D1;
 			productType = "com.apple.product-type.bundle";
 		};
-		C24D1968E42E636F4EB50471 /* Gayageum1 - Standalone Plugin */ = {
+		C24D1968E42E636F4EB50471 /* GayageumSynth - Standalone Plugin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B177488711DF00B349B6570;
 			buildPhases = (
@@ -452,12 +452,12 @@
 			dependencies = (
 				1BC04C5A74F51DDF5FD2A4FA,
 			);
-			name = "Gayageum1 - Standalone Plugin";
-			productName = Gayageum1;
+			name = "GayageumSynth - Standalone Plugin";
+			productName = GayageumSynth;
 			productReference = F754E580F68D8CE3D4CA3D91;
 			productType = "com.apple.product-type.application";
 		};
-		D42048977D9563BC41F3ED05 /* Gayageum1 - VST3 Manifest Helper */ = {
+		D42048977D9563BC41F3ED05 /* GayageumSynth - VST3 Manifest Helper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 475AFE883FA740A126833928;
 			buildPhases = (
@@ -468,8 +468,8 @@
 			);
 			dependencies = (
 			);
-			name = "Gayageum1 - VST3 Manifest Helper";
-			productName = Gayageum1;
+			name = "GayageumSynth - VST3 Manifest Helper";
+			productName = GayageumSynth;
 			productReference = BC323BB7B4C9083CBAB1BC2F;
 			productType = "com.apple.product-type.tool";
 		};
@@ -849,8 +849,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -869,11 +869,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -881,13 +881,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -907,9 +907,9 @@
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lGayageum1";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				OTHER_LDFLAGS = "-lGayageumSynth";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
@@ -964,8 +964,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -984,11 +984,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -996,13 +996,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1026,10 +1026,10 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lGayageum1";
+				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
@@ -1077,8 +1077,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1097,11 +1097,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1109,13 +1109,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1136,9 +1136,9 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lGayageum1";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				OTHER_LDFLAGS = "-lGayageumSynth";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
@@ -1185,7 +1185,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CODE_SIGN_FLAGS = --timestamp;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_NAME = "GayageumSynth";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
@@ -1234,7 +1234,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = --timestamp;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_NAME = "GayageumSynth";
 				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wreorder";
 				ZERO_LINK = NO;
@@ -1282,8 +1282,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1302,11 +1302,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1314,13 +1314,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1341,7 +1341,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1389,8 +1389,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1409,11 +1409,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1421,13 +1421,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1447,8 +1447,8 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1496,8 +1496,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1516,11 +1516,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1528,13 +1528,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1555,8 +1555,8 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1604,8 +1604,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1624,11 +1624,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1636,13 +1636,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1665,10 +1665,10 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lGayageum1";
+				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
@@ -1724,8 +1724,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1744,11 +1744,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1756,13 +1756,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1785,9 +1785,9 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lGayageum1";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
@@ -1835,8 +1835,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1855,11 +1855,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1867,13 +1867,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -1897,9 +1897,9 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lGayageum1";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
-				PRODUCT_NAME = "Gayageum1";
+				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
+				PRODUCT_NAME = "GayageumSynth";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
@@ -1947,8 +1947,8 @@
 					"JucePlugin_Build_LV2=0",
 					"JucePlugin_Enable_IAA=0",
 					"JucePlugin_Enable_ARA=0",
-					"JucePlugin_Name=\\\"Gayageum1\\\"",
-					"JucePlugin_Desc=\\\"Gayageum1\\\"",
+					"JucePlugin_Name=\\\"GayageumSynth\\\"",
+					"JucePlugin_Desc=\\\"GayageumSynth\\\"",
 					"JucePlugin_Manufacturer=\\\"Decidedly\\\"",
 					"JucePlugin_ManufacturerWebsite=\\\"www.Decidedly.com\\\"",
 					"JucePlugin_ManufacturerEmail=\\\"\\\"",
@@ -1967,11 +1967,11 @@
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
 					"JucePlugin_AUMainType=\\'aumu\\'",
 					"JucePlugin_AUSubType=JucePlugin_PluginCode",
-					"JucePlugin_AUExportPrefix=Gayageum1AU",
-					"JucePlugin_AUExportPrefixQuoted=\\\"Gayageum1AU\\\"",
+					"JucePlugin_AUExportPrefix=GayageumSynthAU",
+					"JucePlugin_AUExportPrefixQuoted=\\\"GayageumSynthAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=ly.decided.Gayageum1",
-					"JucePlugin_AAXIdentifier=com.Decidedly.Gayageum1",
+					"JucePlugin_CFBundleIdentifier=ly.decided.GayageumSynth",
+					"JucePlugin_AAXIdentifier=com.Decidedly.GayageumSynth",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=2048",
@@ -1979,13 +1979,13 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757269",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"Decidedly:\\ Gayageum1\\\"",
+					"JucePlugin_IAAName=\\\"Decidedly:\\ GayageumSynth\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.Gayageum1.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.Gayageum1.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
@@ -2005,7 +2005,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.Gayageum1;
+				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
