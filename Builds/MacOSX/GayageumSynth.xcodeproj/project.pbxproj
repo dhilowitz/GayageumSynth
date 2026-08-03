@@ -28,10 +28,10 @@
 		00D977B4114EA1E197A8C82A /* GayageumString.cpp */ = {isa = PBXBuildFile; fileRef = FA100201CB6E681A2F9A6337; };
 		18CC32B2C272BB636BF2BE17 /* AudioUnit.framework */ = {isa = PBXBuildFile; fileRef = 8EDC9A08252F5B7930F3325E; };
 		193EFE3BD9CE1B3008841C32 /* Shared Code */ = {isa = PBXBuildFile; fileRef = 1E21E6E70DA43AC18661DFB0; };
+		1BFCF9E3745690546C1FEF8D /* include_juce_audio_processors_headless_ara.cpp */ = {isa = PBXBuildFile; fileRef = 710F7FDBF405EF9DBB389D12; };
 		2BF64FB749B782C1E4C8B605 /* Accelerate.framework */ = {isa = PBXBuildFile; fileRef = CD8A7D3A5794DEC56D305E06; };
 		2DFC8BAE116497F86BC7C141 /* include_juce_audio_plugin_client_Standalone.cpp */ = {isa = PBXBuildFile; fileRef = 8B4F2D2195658DFE5E7D91D5; };
-		341368792B69257664AB2988 /* juce_VST3ManifestHelper.mm */ = {isa = PBXBuildFile; fileRef = 01FF18F323403F8920DF6180; settings = { COMPILER_FLAGS = "-fobjc-arc -w -DJUCE_SKIP_PRECOMPILED_HEADER"; }; };
-		36E811EAF40E23A0529822D7 /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = 6B324A9DBFCBAE400EB88EC5; };
+		341368792B69257664AB2988 /* juce_VST3ManifestHelper.mm */ = {isa = PBXBuildFile; fileRef = 01FF18F323403F8920DF6180; settings = { COMPILER_FLAGS = "-w -DJUCE_SKIP_PRECOMPILED_HEADER"; }; };
 		38C9B92D0F0DFDBC8DBE52B6 /* CoreAudioKit.framework */ = {isa = PBXBuildFile; fileRef = 0E97D5368FD4FBCDA196CDF9; };
 		4FC5A4CD4BF537AC412FF159 /* VST3 */ = {isa = PBXBuildFile; fileRef = 6455700062ECCD8DF4B6A2D1; };
 		568A6218C21D71E9BEDED4D1 /* include_juce_audio_plugin_client_VST3.mm */ = {isa = PBXBuildFile; fileRef = BB62B7F9004CA39FE3A3F3C2; };
@@ -44,11 +44,12 @@
 		6ABD5F6058F4144E132DEDC3 /* Security.framework */ = {isa = PBXBuildFile; fileRef = B10D40B206B97F318C1CF430; };
 		70C3FBB66608E581D4A9A330 /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 39E947ED68CC94EE79BFA23A; settings = { ATTRIBUTES = (Weak, ); }; };
 		74C468D33559AA5C9F207E94 /* TraditionalModePanel.cpp */ = {isa = PBXBuildFile; fileRef = FD10E8901C204E77A6B36AFB; };
-		7777529B7AF76BA572527423 /* include_juce_audio_processors_ara.cpp */ = {isa = PBXBuildFile; fileRef = 2C0C357DDC6C21FCBCC8A05B; };
 		77DE1863DD250203F13EF6F3 /* include_juce_audio_processors.mm */ = {isa = PBXBuildFile; fileRef = D77296D14D7D3C52062A188B; };
 		782535434A1F9F50FD6A7FC1 /* include_juce_data_structures.mm */ = {isa = PBXBuildFile; fileRef = 66434CCF761A6FCEBFA006B4; };
 		88E12CFCCFED7C11A9BF6077 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = A15B73BFBB956282399D2374; };
+		89EE5DC2EA80EDB58518F90A /* include_juce_audio_processors_headless_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = F94C86A2801B241755E87F98; };
 		8CEB65708F02046EF7542415 /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 21C699ECB9468A06E35EAF4D; };
+		92D1D00CBE2D4AB97DBF8B4A /* include_juce_audio_processors_headless.mm */ = {isa = PBXBuildFile; fileRef = 3FAFA8E8E994F54940A2BD2C; };
 		9388883F8AD91DFBDB548AD1 /* BodyResonator.cpp */ = {isa = PBXBuildFile; fileRef = 43ABA9A47681223226D9D6E7; };
 		93A8529C2240B167A49DABB2 /* include_juce_audio_plugin_client_AU_1.mm */ = {isa = PBXBuildFile; fileRef = 3B1211E61BAFB58569CC79CA; };
 		9E597D06B68AA3AE3F0B3541 /* include_juce_audio_basics.mm */ = {isa = PBXBuildFile; fileRef = 03C0B60BEE5E81B3C26681AF; };
@@ -91,13 +92,14 @@
 		24FABA6FD3FB9E56F1F50740 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		259B92ACC33DF8B4CF3C3840 /* juce_audio_plugin_client */ /* juce_audio_plugin_client */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_plugin_client; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client; sourceTree = "<absolute>"; };
 		2729597BDD1984A2D2D2C052 /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_graphics; sourceTree = "<absolute>"; };
+		28B0322A0CC0443480B5A066 /* juce_audio_processors_headless */ /* juce_audio_processors_headless */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors_headless; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless; sourceTree = "<absolute>"; };
 		29067AF1483F5A669ED2F106 /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		2C0C357DDC6C21FCBCC8A05B /* include_juce_audio_processors_ara.cpp */ /* include_juce_audio_processors_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp; sourceTree = SOURCE_ROOT; };
 		329A7BBC66E2041BCC2E1B38 /* Info-VST3_Manifest_Helper.plist */ /* Info-VST3_Manifest_Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3_Manifest_Helper.plist"; path = "Info-VST3_Manifest_Helper.plist"; sourceTree = SOURCE_ROOT; };
 		33DDD0FD26455629836915A2 /* juce_audio_formats */ /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_formats; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_formats; sourceTree = "<absolute>"; };
 		35E3012E6CB5928DEC7AECDF /* Info-AU.plist */ /* Info-AU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AU.plist"; path = "Info-AU.plist"; sourceTree = SOURCE_ROOT; };
 		39E947ED68CC94EE79BFA23A /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		3B1211E61BAFB58569CC79CA /* include_juce_audio_plugin_client_AU_1.mm */ /* include_juce_audio_plugin_client_AU_1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_AU_1.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_AU_1.mm; sourceTree = SOURCE_ROOT; };
+		3FAFA8E8E994F54940A2BD2C /* include_juce_audio_processors_headless.mm */ /* include_juce_audio_processors_headless.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_processors_headless.mm; path = ../../JuceLibraryCode/include_juce_audio_processors_headless.mm; sourceTree = SOURCE_ROOT; };
 		43ABA9A47681223226D9D6E7 /* BodyResonator.cpp */ /* BodyResonator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BodyResonator.cpp; path = ../../Source/BodyResonator.cpp; sourceTree = SOURCE_ROOT; };
 		4B378DC07869982930EBCA68 /* TraditionalModePanel.h */ /* TraditionalModePanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TraditionalModePanel.h; path = ../../Source/TraditionalModePanel.h; sourceTree = SOURCE_ROOT; };
 		4BE700F9680C341733EE5DB3 /* juce_audio_devices */ /* juce_audio_devices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_devices; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_devices; sourceTree = "<absolute>"; };
@@ -112,9 +114,9 @@
 		695F32F69B6CDAAB2E4A88F0 /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_utils; sourceTree = "<absolute>"; };
 		6A4250F92BD538712B845E71 /* FreePlayModePanel.h */ /* FreePlayModePanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FreePlayModePanel.h; path = ../../Source/FreePlayModePanel.h; sourceTree = SOURCE_ROOT; };
 		6B0447BB8614FE74CD61D12D /* PluginEditor.cpp */ /* PluginEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginEditor.cpp; path = ../../Source/PluginEditor.cpp; sourceTree = SOURCE_ROOT; };
-		6B324A9DBFCBAE400EB88EC5 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		6D76947317EE70C7C6158970 /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		703D5781B8FE21A686282C91 /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_basics; sourceTree = "<absolute>"; };
+		710F7FDBF405EF9DBB389D12 /* include_juce_audio_processors_headless_ara.cpp */ /* include_juce_audio_processors_headless_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_headless_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_headless_ara.cpp; sourceTree = SOURCE_ROOT; };
 		725B4EFFD72F39F7F94494BC /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 		767DD971ED6CD4C1082FE34C /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		8097A8DB73DB82EB564C5C7E /* PluginProcessor.h */ /* PluginProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginProcessor.h; path = ../../Source/PluginProcessor.h; sourceTree = SOURCE_ROOT; };
@@ -149,6 +151,7 @@
 		DF8501AE935C5EADC4B323FB /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
 		DFEA042270BC9748813FECD4 /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = /Users/dhilowitz/SDKs/JUCE/modules/juce_data_structures; sourceTree = "<absolute>"; };
 		F754E580F68D8CE3D4CA3D91 /* Standalone Plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GayageumSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94C86A2801B241755E87F98 /* include_juce_audio_processors_headless_lv2_libs.cpp */ /* include_juce_audio_processors_headless_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_headless_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_headless_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
 		FA100201CB6E681A2F9A6337 /* GayageumString.cpp */ /* GayageumString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GayageumString.cpp; path = ../../Source/GayageumString.cpp; sourceTree = SOURCE_ROOT; };
 		FB9904ED9348B36D1370E7F0 /* Info-Standalone_Plugin.plist */ /* Info-Standalone_Plugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = SOURCE_ROOT; };
 		FC4F184433645C41BC7CDD93 /* Info-VST3.plist */ /* Info-VST3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3.plist"; path = "Info-VST3.plist"; sourceTree = SOURCE_ROOT; };
@@ -256,8 +259,9 @@
 				8B4F2D2195658DFE5E7D91D5,
 				BB62B7F9004CA39FE3A3F3C2,
 				D77296D14D7D3C52062A188B,
-				2C0C357DDC6C21FCBCC8A05B,
-				6B324A9DBFCBAE400EB88EC5,
+				3FAFA8E8E994F54940A2BD2C,
+				710F7FDBF405EF9DBB389D12,
+				F94C86A2801B241755E87F98,
 				DF8501AE935C5EADC4B323FB,
 				89C02E307AB0D76AE75D88D5,
 				5717081B9636448E0E9ADCE9,
@@ -346,6 +350,7 @@
 				33DDD0FD26455629836915A2,
 				259B92ACC33DF8B4CF3C3840,
 				8CD841B9619FB8E841B2AB01,
+				28B0322A0CC0443480B5A066,
 				695F32F69B6CDAAB2E4A88F0,
 				652ED7C5BF096EDA70BBCB40,
 				DFEA042270BC9748813FECD4,
@@ -697,7 +702,7 @@
 			name = "Update manifest";
 			alwaysOutOfDate = 1;
 			shellPath = /bin/sh;
-			shellScript = "set -euo pipefail\n\necho Running codesign --verbose=4 --force --sign - \\\"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\\\"\ncodesign --verbose=4 --force --sign - \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\"\n\necho Running \\\"${CONFIGURATION_BUILD_DIR}/juce_vst3_helper\\\" -create -version \\\"1.0.0\\\" -path \\\"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\\\" -output \\\"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/moduleinfo.json\\\"\n\"${CONFIGURATION_BUILD_DIR}/juce_vst3_helper\" -create -version \"1.0.0\" -path \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}\" -output \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/moduleinfo.json\"\n";
+			shellScript = "set -euo pipefail\n\necho Running \\\"${CONFIGURATION_BUILD_DIR}/juce_vst3_helper\\\" \\> \\\"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/moduleinfo.json\\\"\n\"${CONFIGURATION_BUILD_DIR}/juce_vst3_helper\" > \"${CONFIGURATION_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/moduleinfo.json\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -751,8 +756,9 @@
 				AB04792EF88987DE154BBF0E,
 				FEBBA5D2DFF8ED74EA62A05A,
 				77DE1863DD250203F13EF6F3,
-				7777529B7AF76BA572527423,
-				36E811EAF40E23A0529822D7,
+				92D1D00CBE2D4AB97DBF8B4A,
+				1BFCF9E3745690546C1FEF8D,
+				89EE5DC2EA80EDB58518F90A,
 				6A9D80BEA5B02CB1C188D5AA,
 				B7529B40180165BB486A7E90,
 				DFFC34A061D57A1F6F845EBC,
@@ -823,12 +829,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -861,9 +868,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -887,16 +894,16 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -906,7 +913,7 @@
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -938,12 +945,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -976,9 +984,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1002,17 +1010,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1025,7 +1033,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
@@ -1051,12 +1059,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1089,9 +1098,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1115,16 +1124,16 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1135,7 +1144,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1256,12 +1265,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1294,9 +1304,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1320,16 +1330,16 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1340,7 +1350,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
@@ -1363,12 +1373,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1401,9 +1412,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1427,17 +1438,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 					"JUCE_SHARED_CODE=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1446,7 +1457,7 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
@@ -1470,12 +1481,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1508,9 +1520,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1534,17 +1546,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 					"JUCE_SHARED_CODE=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1554,7 +1566,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
@@ -1578,12 +1590,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1616,9 +1629,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1642,17 +1655,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1664,7 +1677,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
@@ -1698,12 +1711,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1736,9 +1750,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1762,17 +1776,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1784,7 +1798,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1809,12 +1823,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_NDEBUG=1",
 					"NDEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1847,9 +1862,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1873,17 +1888,17 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -1896,7 +1911,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1921,12 +1936,13 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"_DEBUG=1",
 					"DEBUG=1",
-					"JUCE_PROJUCER_VERSION=0x80008",
+					"JUCE_PROJUCER_VERSION=0x8000c",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_processors=1",
+					"JUCE_MODULE_AVAILABLE_juce_audio_processors_headless=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_utils=1",
 					"JUCE_MODULE_AVAILABLE_juce_core=1",
 					"JUCE_MODULE_AVAILABLE_juce_data_structures=1",
@@ -1959,9 +1975,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=1.0.0",
-					"JucePlugin_VersionCode=0x10000",
-					"JucePlugin_VersionString=\\\"1.0.0\\\"",
+					"JucePlugin_Version=0.9.0",
+					"JucePlugin_VersionCode=0x900",
+					"JucePlugin_VersionString=\\\"0.9.0\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1985,16 +2001,16 @@
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
 					"JucePlugin_ARAFactoryID=\\\"com.Decidedly.GayageumSynth.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.Decidedly.GayageumSynth.aradocumentarchive.0.9.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=1.0.0",
-					"JUCE_APP_VERSION_HEX=0x10000",
+					"JUCE_APP_VERSION=0.9.0",
+					"JUCE_APP_VERSION_HEX=0x900",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
-					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
 					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"/Users/dhilowitz/SDKs/JUCE/modules",
@@ -2004,7 +2020,7 @@
 				INFOPLIST_FILE = Info-VST3_Manifest_Helper.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "/Users/dhilowitz/SDKs/JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode /Users/dhilowitz/SDKs/JUCE/modules /Users/dhilowitz/SDKs/JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;

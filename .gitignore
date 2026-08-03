@@ -106,3 +106,10 @@ install_manifest.txt
 *.bak
 *.swp
 *.swo
+
+# Personal Folders
+Research
+
+# Legacy installer scaffolding (never used for real releases, has a
+# committed-locally cert file - keep it off git entirely)
+Installer

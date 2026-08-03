@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio Version 17
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GayageumSynth - Standalone Plugin", "GayageumSynth_StandalonePlugin.vcxproj", "{34049C39-F677-BA66-45DB-F9BCD69F8155}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C5B14C59-B304-D9F4-193B-05E09182441D} = {C5B14C59-B304-D9F4-193B-05E09182441D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GayageumSynth - VST3", "GayageumSynth_VST3.vcxproj", "{7E7E2998-FBA4-8746-BB75-BB305118A570}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C5B14C59-B304-D9F4-193B-05E09182441D} = {C5B14C59-B304-D9F4-193B-05E09182441D}
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82} = {AAF0D612-0F37-AFA9-C809-AA637BA63A82}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GayageumSynth - Shared Code", "GayageumSynth_SharedCode.vcxproj", "{C5B14C59-B304-D9F4-193B-05E09182441D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GayageumSynth - VST3 Manifest Helper", "GayageumSynth_VST3ManifestHelper.vcxproj", "{AAF0D612-0F37-AFA9-C809-AA637BA63A82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Debug|x64.ActiveCfg = Debug|x64
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Debug|x64.Build.0 = Debug|x64
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Release|x64.ActiveCfg = Release|x64
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Release|x64.Build.0 = Release|x64
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Release|Win32.ActiveCfg = Release|Win32
+		{7E7E2998-FBA4-8746-BB75-BB305118A570}.Release|Win32.Build.0 = Release|Win32
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Debug|x64.ActiveCfg = Debug|x64
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Debug|x64.Build.0 = Debug|x64
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Debug|Win32.ActiveCfg = Debug|Win32
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Release|x64.ActiveCfg = Release|x64
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Release|x64.Build.0 = Release|x64
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Release|Win32.ActiveCfg = Release|Win32
+		{34049C39-F677-BA66-45DB-F9BCD69F8155}.Release|Win32.Build.0 = Release|Win32
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Debug|x64.ActiveCfg = Debug|x64
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Debug|x64.Build.0 = Debug|x64
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Release|x64.ActiveCfg = Release|x64
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Release|x64.Build.0 = Release|x64
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Release|Win32.ActiveCfg = Release|Win32
+		{C5B14C59-B304-D9F4-193B-05E09182441D}.Release|Win32.Build.0 = Release|Win32
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Debug|x64.ActiveCfg = Debug|x64
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Debug|x64.Build.0 = Debug|x64
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Release|x64.ActiveCfg = Release|x64
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Release|x64.Build.0 = Release|x64
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Release|Win32.ActiveCfg = Release|Win32
+		{AAF0D612-0F37-AFA9-C809-AA637BA63A82}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
