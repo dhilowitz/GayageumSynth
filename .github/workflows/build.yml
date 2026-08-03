@@ -72,9 +72,9 @@ jobs:
         if: matrix.platform == 'mac'
         run: |
           mkdir -p artifacts
-          find ~/Library/Developer/Xcode/DerivedData -name "GayageumSynth.vst3" -exec cp -R {} artifacts/ \;
-          find ~/Library/Developer/Xcode/DerivedData -name "GayageumSynth.component" -exec cp -R {} artifacts/ \;
-          find ~/Library/Developer/Xcode/DerivedData -name "GayageumSynth.app" -exec cp -R {} artifacts/ \;
+          find Builds/MacOSX/build/Release -maxdepth 1 -iname "GayageumSynth.vst3" -exec cp -R {} artifacts/ \;
+          find Builds/MacOSX/build/Release -maxdepth 1 -iname "GayageumSynth.component" -exec cp -R {} artifacts/ \;
+          find Builds/MacOSX/build/Release -maxdepth 1 -iname "GayageumSynth.app" -exec cp -R {} artifacts/ \;
           cd artifacts && zip -r "../GayageumSynth-mac.zip" .
 
       - name: Collect artifacts (Windows)
