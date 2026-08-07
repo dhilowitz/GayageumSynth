@@ -110,10 +110,13 @@ install_manifest.txt
 # Personal Folders
 Research
 
-# Legacy installer scaffolding (never used for real releases) - being
-# replaced with a real, tracked Installer/ tree; keep this blanket ignore
-# until that's built so nothing half-finished gets committed accidentally.
-Installer
+# Installer build artifacts (Installer/*/package-build.sh etc. are tracked -
+# only their outputs are ignored, matching EquationsSynth/AnalogCoast)
+Installer/Mac/Archive
+Installer/Mac/Output
+Installer/Windows/Output/
+Installer/Linux/Output
 
 # Signing certs - never track these
 Certificates
+*.p12
