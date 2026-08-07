@@ -13,9 +13,17 @@ echo $1 | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+$' || die "Build number required, $
 BUILDFILE="GayageumSynth-$1-Mac"
 UNSIGNED_BUILDFILE="GayageumSynth-$1-Mac_Unsigned"
 
-# Backup debug symbols
+# Backup debug symbols, if any were produced. The archive's own dSYMs/
+# folder is the canonical source for an archive build (not Builds/MacOSX/
+# build/Release/, which only symlinks the .app/.vst3/.component themselves).
+# GayageumSynth's Release config currently uses DEBUG_INFORMATION_FORMAT=dwarf
+# (no separate .dSYM bundles), unlike the older Decidedly projects this
+# script was modeled on, so this step is a no-op today - kept in case that
+# setting ever changes.
 mkdir -p ../../Debug\ Symbols/Mac/$1
-cp -r ../../Builds/MacOSX/build/Release/*.dSYM ../../Debug\ Symbols/Mac/$1/
+if compgen -G "Archive/dSYMs/*.dSYM" > /dev/null; then
+    cp -r Archive/dSYMs/*.dSYM ../../Debug\ Symbols/Mac/$1/
+fi
 
 # No AAX - GayageumSynth doesn't ship it, unlike the other Decidedly plugins.
 
