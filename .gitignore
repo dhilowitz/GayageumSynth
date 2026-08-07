@@ -110,6 +110,10 @@ install_manifest.txt
 # Personal Folders
 Research
 
-# Legacy installer scaffolding (never used for real releases, has a
-# committed-locally cert file - keep it off git entirely)
+# Legacy installer scaffolding (never used for real releases) - being
+# replaced with a real, tracked Installer/ tree; keep this blanket ignore
+# until that's built so nothing half-finished gets committed accidentally.
 Installer
+
+# Signing certs - never track these
+Certificates
