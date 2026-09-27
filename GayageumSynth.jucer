@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Decidedly"
               bundleIdentifier="ly.decided.GayageumSynth" pluginManufacturerCode="Dldy"
               pluginCode="Gyg1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
-              version="0.9.1">
+              version="0.9.2">
   <MAINGROUP id="yw9Quz" name="GayageumSynth">
     <GROUP id="{3EF6E81A-CC37-AA1D-818D-1D5079CED492}" name="Source">
       <FILE id="A9tIWC" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -53,7 +53,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC vstLegacyFolder="~/SDKs/VST2_SDK" targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="GayageumSynth"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="GayageumSynth"/>
