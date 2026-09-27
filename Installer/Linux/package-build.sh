@@ -12,6 +12,15 @@ echo $1 | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+$' || die "Build number required, $
 
 TARGET_NAME="GayageumSynth"
 
+cd "$(dirname "$0")"
+ARTIFACTS=~/BuildArtifacts/GayageumSynth
+mkdir -p "$ARTIFACTS"
+# The commit these packages are built from, for the release handoff's
+# provenance check. Dropped first, so a failed run never leaves it next to
+# older packages.
+COMMIT_FILE="$ARTIFACTS/GayageumSynth-$1-Linux-x86_64.commit"
+rm -f "$COMMIT_FILE"
+
 for product_format in "Static" "Dynamic"
 do
     echo "Packaging the $product_format build..."
@@ -36,5 +45,9 @@ do
     tar -czvf "$BUILDFILE.tar.gz" "$BUILDFILE"
     cd ..
 
-    cp ./Output/*.tar.gz ~/Dropbox/Public/Builds/GayageumSynth/
+    # Left where ReleaseBuild's release handoff fetches them from.
+    cp "./Output/$BUILDFILE.tar.gz" "$ARTIFACTS/"
 done
+
+git rev-parse HEAD > "$COMMIT_FILE.partial"
+mv "$COMMIT_FILE.partial" "$COMMIT_FILE"

@@ -7,7 +7,9 @@ cd "$(dirname "$0")"
 
 rm -rf Archive Archive.xcarchive
 
-xcodebuild -project ../../Builds/MacOSX/GayageumSynth.xcodeproj -scheme "GayageumSynth - All" -configuration Release archive -archivePath Archive
+# Any arguments go to xcodebuild as extra build settings, e.g. release-build.sh's
+# CODE_SIGNING_ALLOWED=NO for an account with no signing identity.
+xcodebuild -project ../../Builds/MacOSX/GayageumSynth.xcodeproj -scheme "GayageumSynth - All" -configuration Release archive -archivePath Archive "$@"
 
 # xcodebuild always appends .xcarchive to -archivePath unless it's already
 # there, so a plain "-archivePath Archive" actually produces Archive.xcarchive.
