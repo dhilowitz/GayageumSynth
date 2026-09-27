@@ -1,0 +1,8 @@
+85c85
+<   JUCE_LDFLAGS_VST3 := -shared -Wl,--no-undefined
+---
+>   JUCE_LDFLAGS_VST3 := -shared -Wl,--no-undefined -Wl,--version-script=symbols/vst3.version
+105c105
+<   JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) $(shell $(PKG_CONFIG) --libs alsa freetype2 fontconfig libcurl) -fvisibility=hidden -flto -lrt -ldl -lpthread $(LDFLAGS)
+---
+>   JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) $(shell $(PKG_CONFIG) --static --libs alsa freetype2 fontconfig libcurl libssl) -fvisibility=hidden -flto -fdata-sections -ffunction-sections -Wl,--gc-sections -Wl,-O1 -Wl,--as-needed -Wl,--strip-all -fPIC -Wl,--no-undefined -Wno-unused-function -static-libstdc++ -lstdc++fs -static-libgcc -lpthread -ldl  -Wl,-Bstatic -lrt $(LDFLAGS)

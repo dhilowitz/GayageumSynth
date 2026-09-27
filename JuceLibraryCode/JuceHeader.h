@@ -43,7 +43,7 @@ namespace ProjectInfo
 {
     const char* const  projectName    = "GayageumSynth";
     const char* const  companyName    = "Decidedly";
-    const char* const  versionString  = "0.9.0";
-    const int          versionNumber  = 0x900;
+    const char* const  versionString  = "0.9.1";
+    const int          versionNumber  = 0x901;
 }
 #endif

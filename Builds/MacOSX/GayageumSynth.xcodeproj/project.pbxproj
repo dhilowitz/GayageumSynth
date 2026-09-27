@@ -868,9 +868,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -898,12 +898,13 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -912,7 +913,7 @@
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -983,9 +984,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1013,13 +1014,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1031,7 +1033,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
@@ -1096,9 +1098,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1126,12 +1128,13 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1141,7 +1144,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1301,9 +1304,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1331,12 +1334,13 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1346,7 +1350,7 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
@@ -1408,9 +1412,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1438,13 +1442,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 					"JUCE_SHARED_CODE=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1452,7 +1457,7 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
@@ -1515,9 +1520,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1545,13 +1550,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 					"JUCE_SHARED_CODE=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1560,7 +1566,7 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
 				SKIP_INSTALL = YES;
@@ -1623,9 +1629,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1653,13 +1659,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1670,7 +1677,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
@@ -1743,9 +1750,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1773,13 +1780,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1790,7 +1798,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1854,9 +1862,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1884,13 +1892,14 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GENERATE_PKGINFO_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -1902,7 +1911,7 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				OTHER_LDFLAGS = "-bundle -lGayageumSynth";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "GayageumSynth";
@@ -1966,9 +1975,9 @@
 					"JucePlugin_ProducesMidiOutput=0",
 					"JucePlugin_IsMidiEffect=0",
 					"JucePlugin_EditorRequiresKeyboardFocus=0",
-					"JucePlugin_Version=0.9.0",
-					"JucePlugin_VersionCode=0x900",
-					"JucePlugin_VersionString=\\\"0.9.0\\\"",
+					"JucePlugin_Version=0.9.1",
+					"JucePlugin_VersionCode=0x901",
+					"JucePlugin_VersionString=\\\"0.9.1\\\"",
 					"JucePlugin_VSTUniqueID=JucePlugin_PluginCode",
 					"JucePlugin_VSTCategory=kPlugCategSynth",
 					"JucePlugin_Vst3Category=\\\"Instrument|Synth\\\"",
@@ -1996,12 +2005,13 @@
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
-					"JUCE_APP_VERSION=0.9.0",
-					"JUCE_APP_VERSION_HEX=0x900",
+					"JUCE_APP_VERSION=0.9.1",
+					"JUCE_APP_VERSION_HEX=0x901",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK",
+					"/Users/dhilowitz/SDKs/VST2_SDK",
 					"$(SRCROOT)/../../JuceLibraryCode",
 					"$(SRCROOT)/../../JUCE/modules",
 					"$(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU",
@@ -2010,7 +2020,7 @@
 				INFOPLIST_FILE = Info-VST3_Manifest_Helper.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../JUCE/modules/juce_audio_processors_headless/format_types/VST3_SDK /Users/dhilowitz/SDKs/VST2_SDK $(SRCROOT)/../../JuceLibraryCode $(SRCROOT)/../../JUCE/modules $(SRCROOT)/../../JUCE/modules/juce_audio_plugin_client/AU";
 				PRODUCT_BUNDLE_IDENTIFIER = ly.decided.GayageumSynth;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
