@@ -110,8 +110,8 @@ install_manifest.txt
 # Personal Folders
 Research
 
-# Installer build artifacts (Installer/*/package-build.sh etc. are tracked -
-# only their outputs are ignored, matching EquationsSynth/AnalogCoast)
+# Installer build artifacts (the build scripts are tracked - only their
+# outputs are ignored)
 Installer/Mac/Archive
 Installer/Mac/Output
 Installer/Windows/Output/

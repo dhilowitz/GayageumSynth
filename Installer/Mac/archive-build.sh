@@ -1,6 +1,6 @@
 #!/bin/bash
-# Produces Installer/Mac/Archive via a Release archive build - the input
-# package-build.sh expects (Archive/Products/Applications/GayageumSynth.app etc).
+# Produces Installer/Mac/Archive via a Release archive build - the layout
+# release-build.sh publishes (Archive/Products/Applications/GayageumSynth.app etc).
 # Run from Installer/Mac. Safe to re-run: wipes any previous Archive first.
 set -e
 cd "$(dirname "$0")"
@@ -13,7 +13,7 @@ xcodebuild -project ../../Builds/MacOSX/GayageumSynth.xcodeproj -scheme "Gayageu
 
 # xcodebuild always appends .xcarchive to -archivePath unless it's already
 # there, so a plain "-archivePath Archive" actually produces Archive.xcarchive.
-# package-build.sh expects the plain "Archive" name - normalize it here so
+# release-build.sh expects the plain "Archive" name - normalize it here so
 # nobody has to remember to rename it by hand after every archive build.
 mv Archive.xcarchive Archive
 
