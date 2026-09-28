@@ -1,21 +1,16 @@
 #!/bin/bash
-# Unprivileged Mac release pipeline for GayageumSynth,
-# run by the isolated `claudebuild` account on DaveMac2016 (dispatched as
-# ~/relbuild by ReleaseBuild's build-all). It holds no signing credentials and
-# builds no installer. Two steps belong to the trusted side (dsrelease runs
-# them; by hand they are the commands below), and this script stops and says
-# so when it reaches one of them. Ported from DecentSampler's
-# Installer/Mac/release-build.sh (by way of Equations); keep them in step.
+# Unprivileged Mac release build for GayageumSynth. It holds no signing
+# credentials and builds no installer. Two steps belong to the trusted
+# signing side, and this script stops and says so when it reaches one of
+# them. Ported from DecentSampler's Installer/Mac/release-build.sh (by way of
+# Equations); keep them in step.
 #
 #   1. Build the archive without signing and publish it to
 #        /Users/Shared/BuildHandoff/GayageumSynth/<v>/Archive       (+ BUILD_INFO)
-#   2. [trusted]  ~/TrustedSigning/bin/sign-ds-archive --product GayageumSynth <v>
-#        copies exactly the three bundles out of it and signs them;
-#        publishes only its receipt:
-#        SignedHandoff/GayageumSynth/<v>/mac-archive/<run>/RECEIPT.json
-#   3. [trusted]  ~/TrustedSigning/bin/sign-notarize-ds-pkg --product GayageumSynth <v>
-#        builds the installer from the trusted recipe, signs, notarizes and
-#        zips it: SignedHandoff/GayageumSynth/<v>/mac-pkg/<run>/
+#   2. [trusted]  The bundles are signed; only a receipt is published:
+#        /Users/Shared/SignedHandoff/GayageumSynth/<v>/mac-archive/<run>/RECEIPT.json
+#   3. [trusted]  The installer is built, signed, notarized and zipped:
+#        /Users/Shared/SignedHandoff/GayageumSynth/<v>/mac-pkg/<run>/
 #          GayageumSynth-<v>-Mac.zip, GayageumSynth-<v>-Mac_Unsigned.zip, RECEIPT.json
 #   4. Copy those two zips, byte for byte, into ~/BuildArtifacts/GayageumSynth/,
 #      where staging fetches them with GayageumSynth-<v>-Mac.commit.
@@ -26,8 +21,7 @@
 # trusted step's output only counts if its receipt says it was made from this
 # build: the archive receipt must name the SHA-256 of the current BUILD_INFO,
 # and the package receipt the current archive run. Anything else is waited
-# for again. (The trusted controller does not rely on this: it binds the zips
-# it uploads to the receipts it fetched from DaveMac2016 itself.)
+# for again.
 #
 # The commit that built the published archive is recorded in BUILD_INFO. When
 # HEAD moves on, or with --fresh, the BuildHandoff folder for this version is
@@ -80,16 +74,15 @@ remove_zips () {
 
 trap 'rc=$?; [ "$rc" -eq 0 ] || remove_zips' EXIT
 
-# Prints the trusted command to run, then exits with the "awaiting" status.
-# build-all repeats the ACTION: lines in its summary.
-# The GATE: line is a fixed identifier (mac-archive or mac-pkg) that
-# build-all records in its structured state for the trusted controller.
+# Says which trusted step it is waiting for, then exits with the "awaiting"
+# status. The GATE: line is a fixed identifier (mac-archive or mac-pkg) that
+# the release tooling records as this build's state.
 await_signing () {
-    local gate="$1" command="$2" reason="$3"
+    local gate="$1" reason="$2"
     echo ""
     echo "$reason"
     echo "GATE: $gate"
-    echo "ACTION: As dhilowitz on DaveMac2016, run:  $command"
+    echo "ACTION: waiting for the trusted signing step $gate"
     exit "$EXIT_AWAITING_SIGNING"
 }
 
@@ -149,22 +142,20 @@ if [ ! -f "$BUILD_INFO" ]; then
 fi
 
 # --- 2. Signed archive (trusted) -----------------------------------------------
-SIGN_ARCHIVE_CMD="~/TrustedSigning/bin/sign-ds-archive --product $PRODUCT $VERSION"
 ARCHIVE_RUN="$(current_run mac-archive || true)"
 [ -n "$ARCHIVE_RUN" ] \
-    || await_signing mac-archive "$SIGN_ARCHIVE_CMD" "Waiting for the archive to be signed: no mac-archive receipt for $VERSION yet."
+    || await_signing mac-archive "Waiting for the archive to be signed: no mac-archive receipt for $VERSION yet."
 [ "$(receipt_value "$SIGNED_DIR/mac-archive/$ARCHIVE_RUN/RECEIPT.json" inputs build_info_sha256)" = "$(sha256 "$BUILD_INFO")" ] \
-    || await_signing mac-archive "$SIGN_ARCHIVE_CMD" "The newest signed archive (run $ARCHIVE_RUN) was made from an earlier build, not the one now in $BUILD_DIR."
+    || await_signing mac-archive "The newest signed archive (run $ARCHIVE_RUN) was made from an earlier build, not the one now in $BUILD_DIR."
 echo "Signed archive: run $ARCHIVE_RUN, made from this build."
 
 # --- 3. Installer (trusted) ------------------------------------------------------
-SIGN_PKG_CMD="~/TrustedSigning/bin/sign-notarize-ds-pkg --product $PRODUCT $VERSION"
 PKG_RUN="$(current_run mac-pkg || true)"
 [ -n "$PKG_RUN" ] \
-    || await_signing mac-pkg "$SIGN_PKG_CMD" "Waiting for the installer to be built, signed and notarized: no mac-pkg receipt for $VERSION yet."
+    || await_signing mac-pkg "Waiting for the installer to be built, signed and notarized: no mac-pkg receipt for $VERSION yet."
 PKG_RECEIPT="$SIGNED_DIR/mac-pkg/$PKG_RUN/RECEIPT.json"
 [ "$(receipt_value "$PKG_RECEIPT" inputs archive_run_id)" = "$ARCHIVE_RUN" ] \
-    || await_signing mac-pkg "$SIGN_PKG_CMD" "The newest installer (run $PKG_RUN) was built from a different signed archive than run $ARCHIVE_RUN."
+    || await_signing mac-pkg "The newest installer (run $PKG_RUN) was built from a different signed archive than run $ARCHIVE_RUN."
 echo "Installer: run $PKG_RUN, built from signed archive run $ARCHIVE_RUN."
 
 # --- 4. Zips for staging -----------------------------------------------------------

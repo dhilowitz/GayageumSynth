@@ -1,20 +1,14 @@
-# Unprivileged Windows release pipeline for GayageumSynth, run by the
-# isolated MINISFORUM\claudebuild account (dispatched by
-# ReleaseBuild's build-all). It holds no signing credentials and builds no
-# installer. Two steps belong to the trusted side (dsrelease runs them; by
-# hand they are the commands below), and this script stops and says so when
-# it reaches one of them. Ported from DecentSampler's
-# Installer\Windows\release-build.ps1 (by way of Equations); keep them in step.
+# Unprivileged Windows release build for GayageumSynth. It holds no signing
+# credentials and builds no installer. Two steps belong to the trusted
+# signing side, and this script stops and says so when it reaches one of
+# them. Ported from DecentSampler's Installer\Windows\release-build.ps1 (by
+# way of Equations); keep them in step.
 #
 #   1. Compile x64 and Win32 and publish them to
 #        C:\BuildHandoff\GayageumSynth\<v>\unsigned\  (+ BUILD_INFO.txt, TO-SIGN.json)
-#   2. [trusted]  C:\TrustedSigning\sign-ds-binaries.ps1 -Product GayageumSynth -Version <v>:
-#                 copies exactly the known files out of it and signs the
-#                 four binaries; publishes only its receipt:
+#   2. [trusted]  The four binaries are signed; only a receipt is published:
 #        C:\SignedHandoff\GayageumSynth\<v>\win-binaries\<run>\RECEIPT.json
-#   3. [trusted]  C:\TrustedSigning\sign-ds-installer.ps1 -Product GayageumSynth -Version <v>:
-#                 builds the installer from its own reviewed Inno Setup
-#                 script, signs it, and makes both zips:
+#   3. [trusted]  The installer is built and signed, and both zips are made:
 #        C:\SignedHandoff\GayageumSynth\<v>\win-installer\<run>\
 #          GayageumSynth-<v>-Windows.zip, GayageumSynth-<v>-Windows-No-Installer.zip, RECEIPT.json
 #   4. Copy those two zips, byte for byte, into %USERPROFILE%\BuildArtifacts\GayageumSynth,
@@ -26,9 +20,7 @@
 # trusted step's output only counts if its receipt says it was made from this
 # build: the binaries receipt must name the SHA-256 of the current
 # BUILD_INFO.txt, and the installer receipt the current binaries run.
-# Anything else is waited for again. (The trusted controller does not rely
-# on this: it binds the zips it uploads to the receipts it fetched from
-# minisforum itself.)
+# Anything else is waited for again.
 #
 # The commit that built the published binaries is recorded in BUILD_INFO.txt.
 # When HEAD moves on, or with -Fresh, the BuildHandoff folder for this version
@@ -103,10 +95,6 @@ foreach ($s in $Solutions) {
     }
 }
 
-# What to run on the trusted side.
-$SignBinariesAction = "run:  C:\TrustedSigning\sign-ds-binaries.ps1 -Product $Product -Version $Version   (dsrelease does this for you)"
-$SignInstallerAction = "run:  C:\TrustedSigning\sign-ds-installer.ps1 -Product $Product -Version $Version   (dsrelease does this for you)"
-
 # Finished zips stay only while this run can vouch for them: any run that
 # stops before step 4 confirms them removes them, so staging can never pick
 # up zips from an older build.
@@ -122,12 +110,12 @@ function Fail([string]$message) {
 }
 
 # The GATE: line is a fixed identifier (win-binaries or win-installer) that
-# build-all records in its structured state for the trusted controller.
-function Await-Signing([string]$gate, [string]$action, [string]$reason) {
+# the release tooling records as this build's state.
+function Await-Signing([string]$gate, [string]$reason) {
     Write-Output ''
     Write-Output $reason
     Write-Output "GATE: $gate"
-    Write-Output "ACTION: As dhilo on minisforum, $action"
+    Write-Output "ACTION: waiting for the trusted signing step $gate"
     Remove-Zips
     exit $ExitAwaitingSigning
 }
@@ -239,21 +227,21 @@ function Get-Receipt([string]$gate, [string]$run) {
 # --- 2. Signed binaries (trusted) ---------------------------------------------------
 $binariesRun = Get-CurrentRun 'win-binaries'
 if (-not $binariesRun) {
-    Await-Signing win-binaries $SignBinariesAction "Waiting for the binaries to be signed: no win-binaries receipt for $Version yet."
+    Await-Signing win-binaries "Waiting for the binaries to be signed: no win-binaries receipt for $Version yet."
 }
 if ((Get-Receipt 'win-binaries' $binariesRun).inputs.build_info_sha256 -ne (Get-Sha256 $BuildInfo).ToLowerInvariant()) {
-    Await-Signing win-binaries $SignBinariesAction "The newest signed binaries (run $binariesRun) were made from an earlier build, not the one now in $BuildDir."
+    Await-Signing win-binaries "The newest signed binaries (run $binariesRun) were made from an earlier build, not the one now in $BuildDir."
 }
 Write-Output "Signed binaries: run $binariesRun, made from this build."
 
 # --- 3. Installer (trusted) --------------------------------------------------------
 $installerRun = Get-CurrentRun 'win-installer'
 if (-not $installerRun) {
-    Await-Signing win-installer $SignInstallerAction "Waiting for the trusted side to build and sign the installer: no win-installer receipt for $Version yet."
+    Await-Signing win-installer "Waiting for the trusted side to build and sign the installer: no win-installer receipt for $Version yet."
 }
 $installerReceipt = Get-Receipt 'win-installer' $installerRun
 if ($installerReceipt.inputs.binaries_run_id -ne $binariesRun) {
-    Await-Signing win-installer $SignInstallerAction "The newest installer (run $installerRun) was built from different signed binaries than run $binariesRun."
+    Await-Signing win-installer "The newest installer (run $installerRun) was built from different signed binaries than run $binariesRun."
 }
 Write-Output "Installer: run $installerRun, built from signed binaries run $binariesRun."
 
