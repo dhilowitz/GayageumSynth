@@ -45,7 +45,7 @@ do
     tar -czvf "$BUILDFILE.tar.gz" "$BUILDFILE"
     cd ..
 
-    # Left where ReleaseBuild's release handoff fetches them from.
+    # Left where the release handoff fetches them from.
     cp "./Output/$BUILDFILE.tar.gz" "$ARTIFACTS/"
 done
 

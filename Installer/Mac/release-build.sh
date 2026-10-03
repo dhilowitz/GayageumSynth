@@ -104,6 +104,32 @@ current_run () {
     [[ "$run" =~ ^[0-9a-f]{32}$ ]] && [ -f "$SIGNED_DIR/$1/$run/RECEIPT.json" ] && echo "$run"
 }
 
+# Debug symbols: every shipped bundle's dSYM (app extensions included), set
+# aside with the archive it belongs to. A dSYM must carry exactly its
+# binary's UUIDs.
+SYMBOLS_DIR="$ARTIFACTS_DIR/Symbols/$VERSION/mac"
+DSYM_SETTINGS=(GCC_GENERATE_DEBUGGING_SYMBOLS=YES DEBUG_INFORMATION_FORMAT=dwarf-with-dsym 'DWARF_DSYM_FOLDER_PATH=$(CONFIGURATION_BUILD_DIR)')
+save_dsyms () {  # save_dsyms <archive Products folder> <folder with the dSYMs>...
+    local products="$1" b name exe want got d found
+    shift
+    rm -rf "$SYMBOLS_DIR" "$SYMBOLS_DIR.partial"
+    mkdir -p "$SYMBOLS_DIR.partial"
+    while IFS= read -r -d '' b; do
+        name=$(basename "$b")
+        exe=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$b/Contents/Info.plist")
+        found=""
+        for d in "$@"; do [ -d "$d/$name.dSYM" ] && found="$d/$name.dSYM"; done
+        [ -n "$found" ] || die "no dSYM for $name"
+        want=$(dwarfdump --uuid "$b/Contents/MacOS/$exe" | awk '{print $2}' | sort)
+        got=$(dwarfdump --uuid "$found" | awk '{print $2}' | sort)
+        [ -n "$want" ] && [ "$want" = "$got" ] || die "$name.dSYM is not from this build (UUIDs $got, binary $want)"
+        ditto "$found" "$SYMBOLS_DIR.partial/$name.dSYM"
+    done < <(find "$products" -type d \( -name '*.app' -o -name '*.appex' -o -name '*.component' -o -name '*.vst' \
+                                        -o -name '*.vst3' -o -name '*.aaxplugin' \) -print0)
+    mv "$SYMBOLS_DIR.partial" "$SYMBOLS_DIR"
+    echo "Set aside the dSYMs in $SYMBOLS_DIR"
+}
+
 # --- 1. Archive --------------------------------------------------------------
 if [ -f "$BUILD_INFO" ]; then
     BUILT_COMMIT="$(sed -n 's/^commit=//p' "$BUILD_INFO")"
@@ -122,7 +148,8 @@ fi
 if [ ! -f "$BUILD_INFO" ]; then
     echo "Building the unsigned $VERSION archive from $COMMIT..."
     # No identity is available to this account; the trusted step signs.
-    "$SCRIPT_DIR/archive-build.sh" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+    "$SCRIPT_DIR/archive-build.sh" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO "${DSYM_SETTINGS[@]}"
+    save_dsyms "$SCRIPT_DIR/Archive/Products" "$SCRIPT_DIR/../../Builds/MacOSX/build/Release"
 
     # Publish under a temporary name first so the signing script can never
     # pick up a half-copied archive.
