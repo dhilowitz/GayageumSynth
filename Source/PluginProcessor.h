@@ -62,10 +62,13 @@ public:
     // Public access to parameters for the editor
     juce::AudioProcessorValueTreeState apvts;
 
+    // The pitch a string plays in traditional mode with its Anjok at the given position
+    static float stringFrequency (int stringIndex, float anjokPosition);
+    static constexpr int numStrings = 12;
+
 private:
     //==============================================================================
     // Voice management
-    static constexpr int numStrings = 12;
     static constexpr int maxVoices = 16;  // For free play mode
     std::array<G1GayageumString, maxVoices> strings;
     

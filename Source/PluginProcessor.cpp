@@ -9,6 +9,42 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+namespace
+{
+    // Default tuning for the 12 strings (traditional gayageum tuning)
+    const float defaultTuning[12] = {
+        164.81f,  // E3  - String 1
+        185.00f,  // F#3 - String 2
+        220.00f,  // A3  - String 3
+        246.94f,  // B3  - String 4
+        277.18f,  // C#4 - String 5
+        329.63f,  // E4  - String 6
+        369.99f,  // F#4 - String 7
+        440.00f,  // A4  - String 8
+        493.88f,  // B4  - String 9
+        554.37f,  // C#5 - String 10
+        659.25f,  // E5  - String 11
+        739.99f   // F#5 - String 12
+    };
+
+    // Default Anjok positions (graduated like a real gayageum)
+    // Lower strings have anjoks further from bridge, higher strings closer
+    const float defaultPositions[12] = {
+        0.75f,  // String 1 (lowest)
+        0.72f,  // String 2
+        0.69f,  // String 3
+        0.66f,  // String 4
+        0.63f,  // String 5
+        0.60f,  // String 6
+        0.57f,  // String 7
+        0.54f,  // String 8
+        0.51f,  // String 9
+        0.48f,  // String 10
+        0.46f,  // String 11
+        0.45f   // String 12 (highest)
+    };
+}
+
 //==============================================================================
 GayageumSynthAudioProcessor::GayageumSynthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -29,27 +65,16 @@ GayageumSynthAudioProcessor::~GayageumSynthAudioProcessor()
 {
 }
 
+float GayageumSynthAudioProcessor::stringFrequency (int stringIndex, float anjokPosition)
+{
+    // f = slope / position, with each string's slope set so its default position plays its default tuning
+    return defaultTuning[stringIndex] * defaultPositions[stringIndex] / anjokPosition;
+}
+
 //==============================================================================
 juce::AudioProcessorValueTreeState::ParameterLayout GayageumSynthAudioProcessor::createParameterLayout()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
-    
-    // Default Anjok positions (graduated like a real gayageum)
-    // Lower strings have anjoks further from bridge, higher strings closer
-    const float defaultPositions[12] = {
-        0.75f,  // String 1 (lowest)
-        0.72f,  // String 2
-        0.69f,  // String 3
-        0.66f,  // String 4
-        0.63f,  // String 5
-        0.60f,  // String 6
-        0.57f,  // String 7
-        0.54f,  // String 8
-        0.51f,  // String 9
-        0.48f,  // String 10
-        0.46f,  // String 11
-        0.45f   // String 12 (highest)
-    };
     
     // Create Anjok position parameters for each of the 12 strings
     for (int i = 0; i < numStrings; ++i)
@@ -198,39 +223,6 @@ void GayageumSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesP
     
     // Initialize body resonator
     bodyResonator.prepare(sampleRate);
-    
-    // Default tuning for the 12 strings (traditional gayageum tuning)
-    const float defaultTuning[12] = {
-        164.81f,  // E3  - String 1
-        185.00f,  // F#3 - String 2
-        220.00f,  // A3  - String 3
-        246.94f,  // B3  - String 4
-        277.18f,  // C#4 - String 5
-        329.63f,  // E4  - String 6
-        369.99f,  // F#4 - String 7
-        440.00f,  // A4  - String 8
-        493.88f,  // B4  - String 9
-        554.37f,  // C#5 - String 10
-        659.25f,  // E5  - String 11
-        739.99f   // F#5 - String 12
-    };
-    
-    // Default Anjok positions (graduated like a real gayageum)
-    // Lower strings have anjoks further from bridge, higher strings closer
-    const float defaultPositions[12] = {
-        0.75f,  // String 1 (lowest)
-        0.72f,  // String 2
-        0.69f,  // String 3
-        0.66f,  // String 4
-        0.63f,  // String 5
-        0.60f,  // String 6
-        0.57f,  // String 7
-        0.54f,  // String 8
-        0.51f,  // String 9
-        0.48f,  // String 10
-        0.46f,  // String 11
-        0.45f   // String 12 (highest)
-    };
     
     // Calculate slope for each string based on desired frequency and its specific default position
     // Using the formula: f = slope / position, so slope = f * position

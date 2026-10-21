@@ -31,11 +31,15 @@ GayageumSynth is a JUCE-based audio plugin that implements a physical model of t
 
 ### Controls
 
-- **Play Mode Toggle**: Switch between Traditional and Free Play modes
-- **Anjok Position (1-12)**: Individual pitch control for each string (Traditional mode only)
+- **Mode** (title bar): Switch between Traditional and Free Play modes
+- **Strings 1-12**: Each string's Anjok position fader, with the note it tunes the string to above it (Traditional mode only)
 - **Damping**: Controls the decay time of the strings (0.0 = short decay, 1.0 = long sustain)
 - **Body Resonance**: Amount of body resonator effect (0.0 = dry, 1.0 = full resonance)
 - **Excitation Blend**: Mix between tonal and percussive attack (0.0 = smooth, 1.0 = bright/noisy)
+- **Double / Detune**: Play a second, detuned string with every note (Free Play mode only)
+
+The editor uses the same look as DHTracker, DHAmbience and DHRoom (`Source/Theme.h`, with the Barlow
+Condensed and JetBrains Mono fonts in `Resources/Fonts`). Controls the current mode doesn't use are dimmed.
 
 ## Technical Details
 
@@ -51,7 +55,8 @@ GayageumSynth is a JUCE-based audio plugin that implements a physical model of t
 - `G1GayageumString`: Individual string/voice implementation with digital waveguide synthesis
 - `G1BodyResonator`: Multi-band resonant filter for body simulation
 - `GayageumSynthAudioProcessor`: Main plugin processor handling MIDI, voice management, and synthesis
-- `GayageumSynthAudioProcessorEditor`: GUI with parameter controls and mode toggle
+- `GayageumSynthAudioProcessorEditor`: GUI with parameter controls and mode switch
+- `Theme`: the shared look (colours, fonts, knob and fader drawing)
 
 ### Research Foundation
 
@@ -97,14 +102,14 @@ Key implementation details:
 ### Traditional Mode
 
 1. Launch the plugin/app
-2. Ensure "Free Play Mode" toggle is OFF
+2. Set the mode in the title bar to "Traditional"
 3. Play MIDI notes C4 (60) through B4 (71) to trigger strings 1-12
 4. Adjust individual anjok position sliders to tune each string
 5. Control damping, body resonance, and excitation blend globally
 
 ### Free Play Mode
 
-1. Toggle "Free Play Mode" ON
+1. Set the mode in the title bar to "Free Play"
 2. Play any MIDI note across the full keyboard range
 3. Anjok position controls are bypassed in this mode
 4. Supports up to 16 simultaneous notes

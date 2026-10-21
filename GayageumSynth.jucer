@@ -21,17 +21,17 @@
       <FILE id="BR1234" name="BodyResonator.cpp" compile="1" resource="0"
             file="Source/BodyResonator.cpp"/>
       <FILE id="BR5678" name="BodyResonator.h" compile="0" resource="0" file="Source/BodyResonator.h"/>
-      <FILE id="SC1234" name="StringControl.cpp" compile="1" resource="0"
-            file="Source/StringControl.cpp"/>
-      <FILE id="SC5678" name="StringControl.h" compile="0" resource="0" file="Source/StringControl.h"/>
-      <FILE id="TM1234" name="TraditionalModePanel.cpp" compile="1" resource="0"
-            file="Source/TraditionalModePanel.cpp"/>
-      <FILE id="TM5678" name="TraditionalModePanel.h" compile="0" resource="0"
-            file="Source/TraditionalModePanel.h"/>
-      <FILE id="FP1234" name="FreePlayModePanel.cpp" compile="1" resource="0"
-            file="Source/FreePlayModePanel.cpp"/>
-      <FILE id="FP5678" name="FreePlayModePanel.h" compile="0" resource="0"
-            file="Source/FreePlayModePanel.h"/>
+      <FILE id="Thm001" name="Theme.cpp" compile="1" resource="0" file="Source/Theme.cpp"/>
+      <FILE id="Thm002" name="Theme.h" compile="0" resource="0" file="Source/Theme.h"/>
+    </GROUP>
+    <GROUP id="{6B1E2F0A-3C4D-4E5F-8A9B-0C1D2E3F4A5B}" name="Resources">
+      <FILE id="FntBM" name="BarlowCondensed-Medium.ttf" compile="0" resource="1" file="Resources/Fonts/BarlowCondensed-Medium.ttf"/>
+      <FILE id="FntBS" name="BarlowCondensed-SemiBold.ttf" compile="0" resource="1" file="Resources/Fonts/BarlowCondensed-SemiBold.ttf"/>
+      <FILE id="FntBB" name="BarlowCondensed-Bold.ttf" compile="0" resource="1" file="Resources/Fonts/BarlowCondensed-Bold.ttf"/>
+      <FILE id="FntJR" name="JetBrainsMono-Regular.ttf" compile="0" resource="1" file="Resources/Fonts/JetBrainsMono-Regular.ttf"/>
+      <FILE id="FntJS" name="JetBrainsMono-SemiBold.ttf" compile="0" resource="1" file="Resources/Fonts/JetBrainsMono-SemiBold.ttf"/>
+      <FILE id="FntLB" name="BarlowCondensed-OFL.txt" compile="0" resource="0" file="Resources/Fonts/BarlowCondensed-OFL.txt"/>
+      <FILE id="FntLJ" name="JetBrainsMono-OFL.txt" compile="0" resource="0" file="Resources/Fonts/JetBrainsMono-OFL.txt"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>

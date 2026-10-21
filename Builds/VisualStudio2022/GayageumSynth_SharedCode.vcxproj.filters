@@ -5,6 +5,9 @@
     <Filter Include="GayageumSynth\Source">
       <UniqueIdentifier>{27F02933-5422-01B6-6778-F85573521C86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GayageumSynth\Resources">
+      <UniqueIdentifier>{DDF021A7-6BBB-6234-0317-3B1993538B76}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GayageumSynth">
       <UniqueIdentifier>{D9A85D6C-9B84-1F00-8046-C2EEAEC7AD03}</UniqueIdentifier>
     </Filter>
@@ -691,13 +694,7 @@
     <ClCompile Include="..\..\Source\BodyResonator.cpp">
       <Filter>GayageumSynth\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\StringControl.cpp">
-      <Filter>GayageumSynth\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TraditionalModePanel.cpp">
-      <Filter>GayageumSynth\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\FreePlayModePanel.cpp">
+    <ClCompile Include="..\..\Source\Theme.cpp">
       <Filter>GayageumSynth\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -3565,6 +3562,9 @@
     <ClCompile Include="..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -3633,13 +3633,7 @@
     <ClInclude Include="..\..\Source\BodyResonator.h">
       <Filter>GayageumSynth\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\StringControl.h">
-      <Filter>GayageumSynth\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TraditionalModePanel.h">
-      <Filter>GayageumSynth\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\FreePlayModePanel.h">
+    <ClInclude Include="..\..\Source\Theme.h">
       <Filter>GayageumSynth\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
@@ -7671,6 +7665,9 @@
     <ClInclude Include="..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
@@ -7679,6 +7676,27 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\Fonts\BarlowCondensed-Medium.ttf">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\BarlowCondensed-SemiBold.ttf">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\BarlowCondensed-Bold.ttf">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\JetBrainsMono-Regular.ttf">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\JetBrainsMono-SemiBold.ttf">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\BarlowCondensed-OFL.txt">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
+    <None Include="..\..\Resources\Fonts\JetBrainsMono-OFL.txt">
+      <Filter>GayageumSynth\Resources</Filter>
+    </None>
     <None Include="..\..\JUCE\modules\juce_audio_devices\native\asio\LICENSE.txt">
       <Filter>JUCE Modules\juce_audio_devices\native\asio</Filter>
     </None>

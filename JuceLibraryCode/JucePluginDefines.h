@@ -155,7 +155,7 @@
  #define JucePlugin_ARAFactoryID           "com.Decidedly.GayageumSynth.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.Decidedly.GayageumSynth.aradocumentarchive.0.9.1"
+ #define JucePlugin_ARADocumentArchiveID   "com.Decidedly.GayageumSynth.aradocumentarchive.0.9.2"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""
